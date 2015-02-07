@@ -7,6 +7,7 @@ import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.subsystems.Elevator;
 import org.usfirst.frc.team3668.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team3668.robot.subsystems.ForwardDrive;
+import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 import org.usfirst.frc.team3668.robot.subsystems.SideDrive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static final ForwardDrive forwardDrive = new ForwardDrive();
 	public static final SideDrive sideDrive = new SideDrive();
 	public static final Elevator elevator = new Elevator();
+	public static final GuideArm guideArm = new GuideArm();
 	public static OI oi;
 	
 	public static Joystick driveStick = new Joystick(IOLabels.DriveStick);
@@ -55,9 +57,9 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        forwardDrive.InitGyro();
+    	if (autonomousCommand != null) autonomousCommand.start();
 //        if (elevatorCalibrate !=null) elevatorCalibrate.start();
-        
       
         
     }

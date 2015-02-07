@@ -33,11 +33,12 @@ public class ForwardDrive extends Subsystem {
 	Joystick driveStick;
 	Gyro gyro;
 	boolean isInLowGear;
+	double initialGyroPosition;
 	public ForwardDrive(){
 		leftEncoder = new Encoder(IOLabels.driveEncoderLeftAPort, IOLabels.driveEncoderLeftBPort);
 		rightEncoder = new Encoder(IOLabels.driveEncoderRightAPort, IOLabels.driveEncoderRightBPort);
 		leftEncoder.setDistancePerPulse(Settings.DriveEncoderScaleFactor); //Need to check the direction of the encoders to make sure that forwards is positive
-		rightEncoder.setDistancePerPulse(Settings.DriveEncoderScaleFactor);
+		rightEncoder.setDistancePerPulse(-Settings.DriveEncoderScaleFactor);
 		rightOne = new Talon(IOLabels.rightMotorOnePort);
 		rightTwo = new Talon(IOLabels.rightMotorTwoPort);
 		leftOne = new Talon(IOLabels.leftMotorOnePort);
@@ -50,14 +51,20 @@ public class ForwardDrive extends Subsystem {
 		leftGearShiftServo.setAngle(Settings.lowGearLeft);
 		driveStick = Robot.driveStick;
 		gyro = new Gyro(IOLabels.gyroPort);
-		gyro.initGyro();
+		InitGyro();
+	}
+	
+	public void InitGyro(){
+		
+		initialGyroPosition = gyro.getAngle();
+		
 	}
 		
 	public void Drive(double speed, double turn){
 			chassis.arcadeDrive(speed, turn);
 			SmartDashboard.putNumber("Left Drive Encoder: ", leftEncoder.getDistance());
 			SmartDashboard.putNumber("Right Drive Encoder: ", rightEncoder.getDistance());
-			SmartDashboard.putNumber("Robot Angle: ", gyro.getAngle());
+			SmartDashboard.putNumber("Robot Angle: ", GetRobotHeading());
 	}
 	
 	public void ShiftGears(){
@@ -88,19 +95,19 @@ public class ForwardDrive extends Subsystem {
 	
 	public double GetRightEncoder(){
 		
-		return rightEncoder.getRate();
+		return rightEncoder.getDistance();
 		
 	}
 	
 	public double GetLeftEncoder(){
 		
-		return leftEncoder.getRate();
+		return leftEncoder.getDistance();
 		
 	}
 	
 	public double GetRobotHeading(){
 		
-		return gyro.getAngle();
+		return gyro.getAngle() - initialGyroPosition;
 		
 	}
 	

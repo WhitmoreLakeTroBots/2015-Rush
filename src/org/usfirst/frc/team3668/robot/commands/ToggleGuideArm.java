@@ -1,47 +1,67 @@
 package org.usfirst.frc.team3668.robot.commands;
 
+
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
+import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 
-import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class JoystickForwardDrive extends Command {
-
-    public JoystickForwardDrive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.forwardDrive);
+public class ToggleGuideArm extends Command {
+	GuideArm guideArm;
+	int direction;
+	Timer timer;
+	
+    public ToggleGuideArm() {
+    	guideArm = Robot.guideArm;
+    	requires(guideArm);
+    	timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.forwardDrive.Drive(0, 0);
+    	timer.reset();
+    	timer.start();
+    	if(guideArm.IsDeployed()){
+    		
+    		direction = -1;
+    		
+    	} else {
+    		
+    		direction = 1;
+    		
+    	}
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.forwardDrive.Drive(Robot.driveStick.getAxis(Joystick.AxisType.kY), (Robot.driveStick.getAxis(Joystick.AxisType.kTwist)) * Settings.turnSensitivityMultiplier);
-//    	Robot.forwardDrive.TestServos(Robot.lifterStick.getAxis(Joystick.AxisType.kX));
+    	guideArm.MoveArms(direction);
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return timer.get() > Settings.guideArmMotorRunTime;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	timer.stop();
+    	guideArm.MoveArms(0);
+    	guideArm.SetDeployed(direction == 1);
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.forwardDrive.Drive(0, 0);
+    	timer.stop();
+    	guideArm.MoveArms(0);
     }
 }

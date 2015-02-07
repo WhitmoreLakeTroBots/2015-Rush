@@ -10,18 +10,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveToPosition extends Command {
+public class DriveToPositionWithHeading extends Command {
 	ForwardDrive forwardDrive;
 	double leftStartPosition;
 	double rightStartPosition;
 	double distanceToTravel;
+	double requestedHeading;
 
-	public DriveToPosition(double distanceToTravel) {
+	public DriveToPositionWithHeading(double distanceToTravel, double requestedHeading) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		forwardDrive = Robot.forwardDrive;
 		requires(forwardDrive);
 		this.distanceToTravel = distanceToTravel;
+		this.requestedHeading = requestedHeading;
 	}
 
 	// Called just before this Command runs the first time
@@ -35,14 +37,15 @@ public class DriveToPosition extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		double distanceError = DistanceError();
+		double headingError = requestedHeading - forwardDrive.GetRobotHeading();
 
 		if (Math.abs(distanceError) < Settings.driveSlowDownDistance) {
 
-			forwardDrive.Drive(-Math.signum(distanceError) * Settings.driveSlowDownSpeed, 0);
+			forwardDrive.Drive(-Math.signum(distanceError) * Settings.driveSlowDownSpeed, headingError * Settings.driveTurnGain);
 
 		} else {
 
-			forwardDrive.Drive(-Math.signum(distanceError), 0);
+			forwardDrive.Drive(-Math.signum(distanceError)* Settings.autoDriveSpeed, headingError * Settings.driveTurnGain);
 
 		}
 		

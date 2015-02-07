@@ -2,6 +2,7 @@ package org.usfirst.frc.team3668.robot;
 
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
+import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -23,6 +24,9 @@ public class OI {
 	Button toContainerHeight = new JoystickButton(lifterStick, IOLabels.goToContainerHeightButton);
 	Button toToteHeight = new JoystickButton(lifterStick, IOLabels.goToToteHeightButton);
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
+//	Button turn = new JoystickButton(lifterStick, 7);
+//	Button drive = new JoystickButton(driveStick, 4);
+	Button toggleGuideArm = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
 	
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -36,7 +40,9 @@ public class OI {
     shift.whenPressed(new ShiftGears());
     toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
     toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
-    
+    toggleGuideArm.whenPressed(new ToggleGuideArm());
+//    turn.whenPressed(new TurnToHeading(Settings.autoTurn));
+//    drive.whenPressed(new DriveToPosition(20));
     	
     }
     // Start the command when the button is pressed and let it run the command

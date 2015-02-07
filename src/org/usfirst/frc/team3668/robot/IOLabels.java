@@ -8,15 +8,16 @@ public class IOLabels {
 	public static final int leftMotorTwoPort = 3;
 	public static final int sideDriveMotorPort = 4;
 	public static final int elevatorMotorPort = 5;
+	public static final int guideArmMotorPort = 6;
 	
 	
 	//Encoders
-	public static final int elevatorEncoderAPort = 4;
-	public static final int elevatorEncoderBPort = 5;
 	public static final int driveEncoderLeftAPort = 0;
 	public static final int driveEncoderLeftBPort = 1;
 	public static final int driveEncoderRightAPort = 2;
 	public static final int driveEncoderRightBPort = 3;
+	public static final int elevatorEncoderAPort = 4;
+	public static final int elevatorEncoderBPort = 5;
 	
 	//Switches
 	public static final int elevatorLowerLimitSwitchPort = 6;
@@ -29,10 +30,11 @@ public class IOLabels {
 	public static final int goToContainerHeightButton = 6;
 	public static final int leftDriveButton = 9;
 	public static final int rightDriveButton = 10;
+	public static final int toggleGuideArm = 3;
 	
 //	Other Ports
+	public static final int gyroPort = 0;
 	public static final int DriveStick = 1;
 	public static final int LifterStick = 2;
-	public static final int gyroPort = 0;
 	
 }

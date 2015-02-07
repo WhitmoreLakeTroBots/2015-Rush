@@ -13,61 +13,47 @@ public class TurnToHeading extends Command {
 	ForwardDrive forwardDrive;
 	double turnLeftOrRight;
 	double requestedHeading;
+	
     public TurnToHeading(double requestedHeading) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	this.requestedHeading = requestedHeading;
     	forwardDrive = Robot.forwardDrive;
     	requires(Robot.forwardDrive);
-//    	requires();
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
     	
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double headingError = requestedHeading - getCurrentHeading();
     	turnLeftOrRight = Math.signum(requestedHeading - getCurrentHeading()); 
     	
-    	if(turnLeftOrRight == 1){
+    	if(Math.abs(headingError) > Settings.turnSlowDownAngle){
     		
-    		forwardDrive.Drive(0, Settings.autoTurnSpeed);
+    		forwardDrive.Drive(0, Settings.autoTurnSpeed * turnLeftOrRight);	
     		
-    	} else if(turnLeftOrRight == -1){
+    	} else {
     		
-    		forwardDrive.Drive(0, -Settings.autoTurnSpeed);
-    		
-    	}else {
-    		
-    		forwardDrive.Drive(0, 0);
+    		forwardDrive.Drive(0, Settings.autoTurnSpeed*turnLeftOrRight*
+    				((1-Settings.minimumTurnSpeed)/Settings.turnSlowDownAngle)*Math.abs(headingError) + Settings.minimumTurnSpeed) ;
     		
     	}
-    	
+    		
     }
     
     public double getCurrentHeading(){
-    	
     	return forwardDrive.GetRobotHeading();
-    	
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return Math.abs(getCurrentHeading() - requestedHeading) < Settings.turnDeadband;  
     }
 
-    // Called once after isFinished returns true
     protected void end() {
-    	
     	forwardDrive.Drive(0, 0);
-    	
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
-
 }
