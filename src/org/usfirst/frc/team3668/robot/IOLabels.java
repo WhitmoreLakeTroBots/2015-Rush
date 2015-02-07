@@ -34,7 +34,5 @@ public class IOLabels {
 	public static final int DriveStick = 1;
 	public static final int LifterStick = 2;
 	public static final int gyroPort = 0;
-
-	
 	
 }

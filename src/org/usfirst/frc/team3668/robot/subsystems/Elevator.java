@@ -29,7 +29,7 @@ public class Elevator extends Subsystem {
 	boolean counterAtBottom;
 	Counter elevatorLowerSwitchCounter;
 	Counter elevatorUpperSwitchCounter;
-	double requestedDirection;
+	double direction;
 	double elevatorPosition;
 	
 	public Elevator(){
@@ -44,41 +44,41 @@ public class Elevator extends Subsystem {
 		elevatorUpperSwitchCounter = new Counter(elevatorUpperSwitch);
 	}
 	
-	public void raiseLower(double direction){
-		direction = -direction;
-		requestedDirection = Math.signum(direction);
+	public void raiseLower(double vector){
+		vector = -vector;
+		direction = Math.signum(vector);
 //		if(Math.abs(direction) < .05){
 //			
 //			direction = 0;
 //			
 //		}
-		if(requestedDirection == -1){
+		if(direction == -1){
 			
-			direction = Settings.elevatorDownSpeedScaler*direction;
+			vector = Settings.elevatorDownSpeedScaler*vector;
 		
 		}
 		
-		if(canMove(direction, requestedDirection)){
+		if(canMove(vector, direction)){
 			
-			if((elevatorMotorEncoder.getDistance() < 2) && requestedDirection == -1 && direction < -.5){
+			if((elevatorMotorEncoder.getDistance() < 2) && direction == -1 && vector < -.5){
 				
 				elevatorMotor.set(-.5);
 				
-			} else if((elevatorMotorEncoder.getDistance() < 1) && requestedDirection == -1 && direction < -.25){
+			} else if((elevatorMotorEncoder.getDistance() < 1) && direction == -1 && vector < -.25){
 				
 				elevatorMotor.set(-.25);
 				
-			} else if((elevatorMotorEncoder.getDistance() > 45) && requestedDirection == 1 && direction > .5){
+			} else if((elevatorMotorEncoder.getDistance() > 45) && direction == 1 && vector > .5){
 				
 				elevatorMotor.set(.5);
 				
-			} else if((elevatorMotorEncoder.getDistance() > 46) && requestedDirection == 1 && direction > .25){
+			} else if((elevatorMotorEncoder.getDistance() > 46) && direction == 1 && vector > .25){
 				
 				elevatorMotor.set(.25);
 				
 			} else{
 				
-				elevatorMotor.set(direction);
+				elevatorMotor.set(vector);
 				
 			}
 			SmartDashboard.putBoolean("Can Move?", true);
@@ -97,13 +97,13 @@ public class Elevator extends Subsystem {
 		SmartDashboard.putNumber("Direction: ", elevatorMotor.get());
 //		
 
-		if(requestedDirection == 1){
+		if(direction == 1){
 			
 			elevatorLowerSwitchCounter.reset();
 			
 			
 		}
-		if(requestedDirection == -1){
+		if(direction == -1){
 			
 			elevatorUpperSwitchCounter.reset();
 			
