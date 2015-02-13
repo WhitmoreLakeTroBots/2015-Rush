@@ -1,6 +1,13 @@
 
 package org.usfirst.frc.team3668.robot;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 import org.usfirst.frc.team3668.robot.commands.AutonomousCommandSequence;
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 //import org.usfirst.frc.team3668.robot.commands.ExampleCommand;
@@ -44,6 +51,19 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+        try {
+        	File file = new File("/u/HelloWorld.txt");
+        	FileOutputStream fos = new FileOutputStream(file);
+        	OutputStreamWriter osw = new OutputStreamWriter(fos);
+			BufferedWriter fw = new BufferedWriter(osw);
+			
+			fw.write(" PROGRAMMERS RULE and also Dimitri Mendelev");
+			fw.close();
+        } catch (IOException e) {
+			e.printStackTrace();
+		} finally{
+		
+		}
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new  AutonomousCommandSequence();

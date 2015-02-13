@@ -27,18 +27,19 @@ public class AutonomousCommandSequence extends CommandGroup {
 //        	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
 //        	addSequential(new DriveToPosition(-Settings.autoZoneDistance));
     	} else {
-    		CommandGroup cg = new CommandGroup();
-    		cg.addParallel(new SetGuideArm(1));		
-        	cg.addParallel(new ElevatorCalibrate());
-        	
-        	addSequential(cg);
-        	addSequential(new ElevatorGoToPosition(Settings.toteHeight));
-        	addSequential(new DriveToPosition(Settings.autoToteDriveDistance));
+    		CommandGroup calibrate = new CommandGroup();
+    		CommandGroup stepOne = new CommandGroup();
+    		calibrate.addParallel(new SetGuideArm(1));		
+        	calibrate.addParallel(new ElevatorCalibrate());
+        	stepOne.addParallel(new ElevatorGoToPosition(Settings.toteHeight));
+        	stepOne.addParallel(new DriveToPosition(Settings.autoToteDriveDistance));
+
+        	addSequential(calibrate);
+        	addSequential(stepOne);
         	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
         	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
         	addSequential(new TurnToHeading(0));
-            addSequential(new DriveToPosition(-Settings.autoZoneDistance));
     	}
         // To run multiple commands at the same time,
         // use addParallel()

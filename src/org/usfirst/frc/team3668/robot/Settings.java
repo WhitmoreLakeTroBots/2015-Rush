@@ -12,9 +12,9 @@ public class Settings {
 	public static final double elevatorDownSpeedScaler = .75;
 
 	//Drive Gear Settings
-	public static final double lowGearRight = 110;
+	public static final double lowGearRight = 117;
 	public static final double lowGearLeft = 145;
-	public static final double highGearRight = 45;
+	public static final double highGearRight = 35;
 	public static final double highGearLeft = 80;
 	
 	//Pre-determined Heights
@@ -35,14 +35,14 @@ public class Settings {
 	public static final double sideDriveSpeed = 0.5;
 	public static final double turnSensitivityMultiplier = .8;
 	public static final double turnDeadband = 2;
-		public static final double DriveEncoderScaleFactor = 6*Math.PI/279; //6 in wheel, 275 ticks per revolution of the wheel, .0685 in per tick
+	public static final double DriveEncoderScaleFactor = 6*Math.PI/279; //6 in wheel, 275 ticks per revolution of the wheel, .0685 in per tick
 	public static final double driveSlowDownDistance = 20;
 	public static final double driveSlowDownSpeed = 0.5;
 	public static final double driveToPositionDeadband = 2;
 	public static final double turnSlowDownAngle = 20;
 	public static final double minimumTurnSpeed = 0.4;
 	public static final double driveTurnGain = 0.1;
-	public static final double guideArmMotorSpeed = 0.1;
+	public static final double guideArmMotorSpeed = 0.25;
 	public static final double guideArmMotorRunTime = 2;
 	
 	

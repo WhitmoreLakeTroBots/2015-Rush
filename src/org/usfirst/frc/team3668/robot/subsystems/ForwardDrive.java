@@ -43,8 +43,8 @@ public class ForwardDrive extends Subsystem {
 		rightTwo = new Talon(IOLabels.rightMotorTwoPort);
 		leftOne = new Talon(IOLabels.leftMotorOnePort);
 		leftTwo = new Talon(IOLabels.leftMotorTwoPort);
-		rightGearShiftServo = new Servo(8);
-		leftGearShiftServo = new Servo(9);
+		rightGearShiftServo = new Servo(IOLabels.rightShifterServo);
+		leftGearShiftServo = new Servo(IOLabels.leftShifterServo);
 		chassis = new RobotDrive(leftOne, leftTwo, rightOne, rightTwo);
 		isInLowGear = true;
 		rightGearShiftServo.setAngle(Settings.lowGearRight);
@@ -71,6 +71,7 @@ public class ForwardDrive extends Subsystem {
 		
 		//To make sure that we aren't going fast when we change gears.
 		//if(driveStick.getAxis(Joystick.AxisType.kY) <= 0.5){
+		
 			if(isInLowGear){
 			
 				rightGearShiftServo.setAngle(Settings.highGearRight);

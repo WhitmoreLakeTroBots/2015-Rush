@@ -5,6 +5,7 @@ import org.usfirst.frc.team3668.robot.Settings;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -26,7 +27,7 @@ public class JoystickForwardDrive extends Command {
     protected void execute() {
     	
     	Robot.forwardDrive.Drive(Robot.driveStick.getAxis(Joystick.AxisType.kY), (Robot.driveStick.getAxis(Joystick.AxisType.kTwist)) * Settings.turnSensitivityMultiplier);
-//    	Robot.forwardDrive.TestServos(Robot.lifterStick.getAxis(Joystick.AxisType.kX));
+    	//    	Robot.forwardDrive.TestServos(Robot.lifterStick.getAxis(Joystick.AxisType.kX));
     	
     }
 
