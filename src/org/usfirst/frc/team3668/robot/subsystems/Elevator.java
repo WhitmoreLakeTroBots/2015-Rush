@@ -90,11 +90,11 @@ public class Elevator extends Subsystem {
 			
 		}
 		SmartDashboard.putNumber("Current Elevator Encoder Position: ", elevatorMotorEncoder.getDistance());
-		SmartDashboard.putNumber("Elevator Encoder Raw: ", elevatorMotorEncoder.get());
+//		SmartDashboard.putNumber("Elevator Encoder Raw: ", elevatorMotorEncoder.get());
 //		SmartDashboard.putNumber("Current Counter: ", counter.get());
 //		System.out.println("Current Counter: " + counter.get());
 //		System.out.println("Direction: " + elevatorMotor.get());
-		SmartDashboard.putNumber("Direction: ", elevatorMotor.get());
+//		SmartDashboard.putNumber("Direction: ", elevatorMotor.get());
 //		
 
 		if(direction == 1){

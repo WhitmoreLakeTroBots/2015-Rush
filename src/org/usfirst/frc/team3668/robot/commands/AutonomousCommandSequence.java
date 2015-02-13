@@ -12,34 +12,43 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousCommandSequence extends CommandGroup {
     
-	AnalogInput autonomousSwitch;
 	
     public  AutonomousCommandSequence() {
-    	autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
+//    	autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	if(AutonomousModeSwitch()){
-//    		addSequential(new ElevatorCalibrate());
-//        	addSequential(new ElevatorGoToPosition(Settings.containerHeight));
-//        	addSequential(new DriveToPosition(Settings.autoToteDriveDistance));
-//        	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
-//        	addSequential(new DriveToPosition(-Settings.autoZoneDistance));
-    	} else {
-    		CommandGroup calibrate = new CommandGroup();
-    		CommandGroup stepOne = new CommandGroup();
-    		calibrate.addParallel(new SetGuideArm(1));		
-        	calibrate.addParallel(new ElevatorCalibrate());
-        	stepOne.addParallel(new ElevatorGoToPosition(Settings.toteHeight));
-        	stepOne.addParallel(new DriveToPosition(Settings.autoToteDriveDistance));
+		CommandGroup calibrateTote = new CommandGroup();
+		CommandGroup calibrateContainer = new CommandGroup();
+		CommandGroup stepOneForTotes = new CommandGroup();
+		CommandGroup stepOneForContainer = new CommandGroup();
+		
+		calibrateTote.addParallel(new SetGuideArm(-1));		
+		calibrateTote.addParallel(new ElevatorCalibrate());
+		calibrateContainer.addParallel(new SetGuideArm(-1));		
+    	calibrateContainer.addParallel(new ElevatorCalibrate());
+		stepOneForTotes.addParallel(new ElevatorGoToPosition(Settings.toteHeight));
+    	stepOneForTotes.addParallel(new DriveToPosition(Settings.autoToteDriveDistance));
+    	
+    	stepOneForContainer.addParallel(new ElevatorGoToPosition(Settings.containerHeight));
+    	stepOneForContainer.addParallel(new DriveToPosition(Settings.autoContainerDriveDistance));
 
-        	addSequential(calibrate);
-        	addSequential(stepOne);
-        	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
-        	addSequential(new TurnToHeading(Settings.autoTurn));
+    	if(AutonomousModeSwitch()){
+    		addSequential(calibrateContainer);
+//    		addSequential(stepOneForContainer);
+        	addSequential(new DriveToPosition(Settings.autoContainerDriveDistance));
+    		addSequential(new ElevatorGoToPosition(Settings.containerHeight));
+        	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
-        	addSequential(new TurnToHeading(0));
+    	} else {
+
+        	addSequential(calibrateTote);
+        	addSequential(stepOneForTotes);
+        	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
+//        	addSequential(new TurnToHeading(Settings.autoTurn));
+        	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
+//        	addSequential(new TurnToHeading(0));
     	}
         // To run multiple commands at the same time,
         // use addParallel()
@@ -59,7 +68,7 @@ public class AutonomousCommandSequence extends CommandGroup {
     public boolean AutonomousModeSwitch(){
     	
     	
-    	return autonomousSwitch.getVoltage() > 2.5;
+    	return Robot.autonomousSwitch.getVoltage() > 2.5;
     	
     }
     

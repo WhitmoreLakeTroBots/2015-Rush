@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3668.robot;
 
+import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
@@ -27,6 +28,7 @@ public class OI {
 //	Button turn = new JoystickButton(lifterStick, 7);
 //	Button drive = new JoystickButton(driveStick, 4);
 	Button toggleGuideArm = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
+	Button calibrateElevator = new JoystickButton(lifterStick, 12);
 	
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -41,6 +43,7 @@ public class OI {
     toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
     toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
     toggleGuideArm.whenPressed(new ToggleGuideArm());
+    calibrateElevator.whenPressed(new ElevatorCalibrate());
 //    turn.whenPressed(new TurnToHeading(Settings.autoTurn));
 //    drive.whenPressed(new DriveToPosition(20));
     	

@@ -23,7 +23,7 @@ public class GuideArm extends Subsystem {
 	
 	public void MoveArms(int direction){
 		
-		guideArmMotor.set(direction * Settings.guideArmMotorSpeed);
+		guideArmMotor.set(-direction * Settings.guideArmMotorSpeed);
 		
 	}
 	

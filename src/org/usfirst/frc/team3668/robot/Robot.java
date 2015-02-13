@@ -4,7 +4,7 @@ package org.usfirst.frc.team3668.robot;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
+//import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
@@ -17,6 +17,7 @@ import org.usfirst.frc.team3668.robot.subsystems.ForwardDrive;
 import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 import org.usfirst.frc.team3668.robot.subsystems.SideDrive;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.command.Command;
@@ -42,8 +43,11 @@ public class Robot extends IterativeRobot {
 	
 	public static Joystick driveStick = new Joystick(IOLabels.DriveStick);
 	public static Joystick lifterStick = new Joystick(IOLabels.LifterStick);
-	
+	public static AnalogInput autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
+
     AutonomousCommandSequence autonomousCommand;
+//	AnalogInput autonomousSwitch;
+
     ElevatorCalibrate elevatorCalibrate;
     SmartDashboard smartDashboard;
     /**
@@ -51,22 +55,21 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        try {
-        	File file = new File("/u/HelloWorld.txt");
-        	FileOutputStream fos = new FileOutputStream(file);
-        	OutputStreamWriter osw = new OutputStreamWriter(fos);
-			BufferedWriter fw = new BufferedWriter(osw);
-			
-			fw.write(" PROGRAMMERS RULE and also Dimitri Mendelev");
-			fw.close();
-        } catch (IOException e) {
-			e.printStackTrace();
-		} finally{
-		
-		}
+//        try {
+//        	File file = new File("/u/HelloWorld.txt");
+//        	FileOutputStream fos = new FileOutputStream(file,true);
+//        	OutputStreamWriter osw = new OutputStreamWriter(fos);
+//			BufferedWriter fw = new BufferedWriter(osw);
+//			
+//			fw.write(" PROGRAMMERS RULE and also Dimitri Mendelev");
+//			fw.close();
+//        } catch (IOException e) {
+//			e.printStackTrace();
+//		} finally{
+//		
+//		}
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new  AutonomousCommandSequence();
         elevatorCalibrate = new ElevatorCalibrate();
         
     }
@@ -77,7 +80,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        forwardDrive.InitGyro();
+        autonomousCommand = new  AutonomousCommandSequence();
+    	forwardDrive.InitGyro();
     	if (autonomousCommand != null) autonomousCommand.start();
 //        if (elevatorCalibrate !=null) elevatorCalibrate.start();
       
