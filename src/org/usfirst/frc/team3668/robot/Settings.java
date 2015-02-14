@@ -18,20 +18,22 @@ public class Settings {
 	public static final double highGearLeft = 80;
 	
 	//Pre-determined Heights
-	public static final double toteHeight = 0;
+	public static final double toteHeight = .5;
 	public static final double containerHeight = 11.5;
+	public static final double twoToteHeight = 24;
 	
 	//Autonomous Settings
-	public static final double autoTurn = 0;
-	public static final double autoToteDriveDistance = 15;
-	public static final double autoContainerDriveDistance = 15;
+	public static final double autoToteDriveDistance = 6;
+	public static final double autoContainerDriveDistance = 6;
 	public static final double autoToteLift = 9;
 	public static final double autoContainerLift = 27;
-	public static final double autoZoneDistance = 150;	
+	public static final double autoZoneDistance = -115;	
 	public static final double autoTurnSpeed = 0.6;
 	public static final double autoDriveSpeed = 1;
 	public static final double autoStepHeight = 6.25;
-
+	public static final double autoTurn = 0;
+	public static final double autoFinalHeading = 90;
+	public static final int autoGuideArmDirection = -1;
 	
 	//Other Settings
 	public static final double sideDriveSpeed = 0.5;

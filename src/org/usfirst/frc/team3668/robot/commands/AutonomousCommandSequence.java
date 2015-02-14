@@ -22,17 +22,17 @@ public class AutonomousCommandSequence extends CommandGroup {
 		CommandGroup calibrateTote = new CommandGroup();
 		CommandGroup calibrateContainer = new CommandGroup();
 		CommandGroup stepOneForTotes = new CommandGroup();
-		CommandGroup stepOneForContainer = new CommandGroup();
+//		CommandGroup stepOneForContainer = new CommandGroup();
 		
-		calibrateTote.addParallel(new SetGuideArm(-1));		
+//		calibrateTote.addParallel(new SetGuideArm(Settings.autoGuideArmDirection));		
 		calibrateTote.addParallel(new ElevatorCalibrate());
-		calibrateContainer.addParallel(new SetGuideArm(-1));		
+//		calibrateContainer.addParallel(new SetGuideArm(Settings.autoGuideArmDirection));		
     	calibrateContainer.addParallel(new ElevatorCalibrate());
 		stepOneForTotes.addParallel(new ElevatorGoToPosition(Settings.toteHeight));
     	stepOneForTotes.addParallel(new DriveToPosition(Settings.autoToteDriveDistance));
     	
-    	stepOneForContainer.addParallel(new ElevatorGoToPosition(Settings.containerHeight));
-    	stepOneForContainer.addParallel(new DriveToPosition(Settings.autoContainerDriveDistance));
+//    	stepOneForContainer.addParallel(new ElevatorGoToPosition(Settings.containerHeight));
+//    	stepOneForContainer.addParallel(new DriveToPosition(Settings.autoContainerDriveDistance));
 
     	if(AutonomousModeSwitch()){
     		addSequential(calibrateContainer);
@@ -40,15 +40,26 @@ public class AutonomousCommandSequence extends CommandGroup {
         	addSequential(new DriveToPosition(Settings.autoContainerDriveDistance));
     		addSequential(new ElevatorGoToPosition(Settings.containerHeight));
         	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
+        	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
+        	addSequential(new TurnToHeading(Settings.autoFinalHeading));
     	} else {
 
-        	addSequential(calibrateTote);
+//        	addSequential(calibrateTote);
+//        	addSequential(stepOneForTotes);
+//        	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
+//        	addSequential(new TurnToHeading(Settings.autoTurn));
+//        	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
+//        	addSequential(new TurnToHeading(0));
+    		
+    		addSequential(calibrateTote);
         	addSequential(stepOneForTotes);
         	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
-//        	addSequential(new TurnToHeading(Settings.autoTurn));
+        	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
-//        	addSequential(new TurnToHeading(0));
+        	addSequential(new TurnToHeading(Settings.autoFinalHeading));
+    		
+    		
     	}
         // To run multiple commands at the same time,
         // use addParallel()

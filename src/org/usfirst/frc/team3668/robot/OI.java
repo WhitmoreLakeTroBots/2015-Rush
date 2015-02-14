@@ -9,6 +9,7 @@ import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -23,6 +24,7 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
 	double containerStep = Settings.containerHeight + Settings.autoStepHeight;
 	double toteStep = Settings.toteHeight + Settings.autoStepHeight;
+	double twoToteHeight = Settings.toteHeight + Settings.toteHeight;
 	Joystick driveStick = Robot.driveStick;
 	Joystick lifterStick = Robot.lifterStick;
 	Button toContainerHeight = new JoystickButton(lifterStick, IOLabels.goToContainerHeightButton);
@@ -36,6 +38,7 @@ public class OI {
 	Button mattIsPickyForTuskDown = new JoystickButton(lifterStick, IOLabels.setGuideArmDown);
 	Button stepTote = new JoystickButton(lifterStick, IOLabels.goToToteStepHeight);
 	Button stepContainer = new JoystickButton(lifterStick, IOLabels.goToContainerStepHeight);
+	Button toTwoToteHeight = new JoystickButton(lifterStick, IOLabels.goToTwoToteHeight);
 	
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to32                                             
@@ -45,9 +48,19 @@ public class OI {
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:
     public OI(){	
+    
+    if(SmartDashboard.getBoolean("Matt", false)){ 
     	
-    mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
-    mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
+        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
+        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
+    	
+    } else {
+    	
+        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(1));
+        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(-1));
+    }
+    toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteHeight));
+
     shift.whenPressed(new ShiftGears());
     toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
     toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));

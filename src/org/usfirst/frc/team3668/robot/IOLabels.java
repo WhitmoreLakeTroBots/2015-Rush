@@ -37,6 +37,7 @@ public class IOLabels {
 //	public static final int toggleGuideArm = 3;
 	public static final int setGuideArmUp = 1;
 	public static final int setGuideArmDown = 2;
+	public static final int goToTwoToteHeight = 7;
 	
 //	Other Ports
 	public static final int gyroPort = 0;
