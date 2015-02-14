@@ -30,9 +30,13 @@ public class IOLabels {
 	public static final int shiftGearsButton = 1;
 	public static final int goToToteHeightButton = 5;
 	public static final int goToContainerHeightButton = 6;
+	public static final int goToContainerStepHeight = 4;
+	public static final int goToToteStepHeight = 3;
 	public static final int leftDriveButton = 9;
 	public static final int rightDriveButton = 10;
-	public static final int toggleGuideArm = 3;
+//	public static final int toggleGuideArm = 3;
+	public static final int setGuideArmUp = 1;
+	public static final int setGuideArmDown = 2;
 	
 //	Other Ports
 	public static final int gyroPort = 0;

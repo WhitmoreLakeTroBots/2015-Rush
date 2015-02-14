@@ -19,7 +19,7 @@ public class Settings {
 	
 	//Pre-determined Heights
 	public static final double toteHeight = 0;
-	public static final double containerHeight = 15;
+	public static final double containerHeight = 11.5;
 	
 	//Autonomous Settings
 	public static final double autoTurn = 0;
@@ -30,6 +30,7 @@ public class Settings {
 	public static final double autoZoneDistance = 150;	
 	public static final double autoTurnSpeed = 0.6;
 	public static final double autoDriveSpeed = 1;
+	public static final double autoStepHeight = 6.25;
 
 	
 	//Other Settings

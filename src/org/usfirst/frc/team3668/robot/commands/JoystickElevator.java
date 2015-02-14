@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class JoystickElevator extends Command {
 
 	Elevator elevator;
-	
+	Joystick lifterStick = Robot.lifterStick;
     public JoystickElevator() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,13 +30,17 @@ public class JoystickElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	elevator.raiseLower(Robot.lifterStick.getAxis(Joystick.AxisType.kY));
+    	if(Math.signum(lifterStick.getAxis(Joystick.AxisType.kY)) == 1){
+    		
+        	elevator.raiseLower(lifterStick.getAxis(Joystick.AxisType.kY));
+
+    		
+    	}
     		
 //		elevator.raiseLower(Robot.lifterStick.getAxis(Joystick.AxisType.kY));
     	
-    	SmartDashboard.putNumber("Joystick: ", Robot.lifterStick.getAxis(Joystick.AxisType.kY));
-    	SmartDashboard.putBoolean("Is at bottom:" , elevator.isAtBottom());
+//    	SmartDashboard.putNumber("Joystick: ", Robot.lifterStick.getAxis(Joystick.AxisType.kY));
+//    	SmartDashboard.putBoolean("Is at bottom:" , elevator.isAtBottom());
     }
     
 

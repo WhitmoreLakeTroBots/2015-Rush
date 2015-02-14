@@ -2,6 +2,7 @@ package org.usfirst.frc.team3668.robot;
 
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
+import org.usfirst.frc.team3668.robot.commands.SetGuideArm;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
 
@@ -20,6 +21,8 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
+	double containerStep = Settings.containerHeight + Settings.autoStepHeight;
+	double toteStep = Settings.toteHeight + Settings.autoStepHeight;
 	Joystick driveStick = Robot.driveStick;
 	Joystick lifterStick = Robot.lifterStick;
 	Button toContainerHeight = new JoystickButton(lifterStick, IOLabels.goToContainerHeightButton);
@@ -27,11 +30,15 @@ public class OI {
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
 //	Button turn = new JoystickButton(lifterStick, 7);
 //	Button drive = new JoystickButton(driveStick, 4);
-	Button toggleGuideArm = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
-	Button calibrateElevator = new JoystickButton(lifterStick, 12);
+//	Button toggleGuideArm = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
+//	Button calibrateElevator = new JoystickButton(lifterStick, 12);
+	Button mattIsPickyForTuskUp = new JoystickButton(lifterStick, IOLabels.setGuideArmUp);
+	Button mattIsPickyForTuskDown = new JoystickButton(lifterStick, IOLabels.setGuideArmDown);
+	Button stepTote = new JoystickButton(lifterStick, IOLabels.goToToteStepHeight);
+	Button stepContainer = new JoystickButton(lifterStick, IOLabels.goToContainerStepHeight);
 	
     // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
+    // by subclassing Button you can create custom triggers and bind those to32                                             
     // commands the same as any other Button.
     
     //// TRIGGERING COMMANDS WITH BUTTONS
@@ -39,11 +46,15 @@ public class OI {
     // three ways:
     public OI(){	
     	
+    mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
+    mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
     shift.whenPressed(new ShiftGears());
     toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
     toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
-    toggleGuideArm.whenPressed(new ToggleGuideArm());
-    calibrateElevator.whenPressed(new ElevatorCalibrate());
+    stepTote.whenPressed(new ElevatorGoToPosition(toteStep));
+    stepContainer.whenPressed(new ElevatorGoToPosition(containerStep));
+//    toggleGuideArm.whenPressed(new ToggleGuideArm());
+//    calibrateElevator.whenPressed(new ElevatorCalibrate());
 //    turn.whenPressed(new TurnToHeading(Settings.autoTurn));
 //    drive.whenPressed(new DriveToPosition(20));
     	
