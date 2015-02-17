@@ -21,6 +21,7 @@ public class Settings {
 	public static final double toteHeight = .5;
 	public static final double containerHeight = 11.5;
 	public static final double twoToteHeight = 24;
+	public static final double actualToteHeight = 12;
 	
 	//Autonomous Settings
 	public static final double autoToteDriveDistance = 6;
@@ -48,6 +49,7 @@ public class Settings {
 	public static final double driveTurnGain = 0.1;
 	public static final double guideArmMotorSpeed = 0.25;
 	public static final double guideArmMotorRunTime = 2.5;
+	public static final double scoringPlatformHeight = 1.96;
 	
 	
 }

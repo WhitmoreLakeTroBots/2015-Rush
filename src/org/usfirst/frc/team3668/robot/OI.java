@@ -22,24 +22,38 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
+//	double elevatorCurrentHeight = Robot.elevator.currentHeight();
+//	double elevatorHeightPlusTote = elevatorCurrentHeight + Settings.actualToteHeight;
+	double currentToteLevel;
+	double numberOfToteIncrements;
 	double containerStep = Settings.containerHeight + Settings.autoStepHeight;
 	double toteStep = Settings.toteHeight + Settings.autoStepHeight;
-	double twoToteHeight = Settings.toteHeight + Settings.toteHeight;
+	double twoToteHeight = (Settings.actualToteHeight + Settings.actualToteHeight) -10.25;
+	double threeToteHeight = (Settings.actualToteHeight * 3) -10.25;
+	double fourToteHeight = (Settings.actualToteHeight * 4) -10.25;
+	double toteScoreStep = Settings.toteHeight + Settings.autoStepHeight + Settings.scoringPlatformHeight;
+	double twoToteScoreHeight = twoToteHeight + Settings.scoringPlatformHeight;
+	double threeToteScoreHeight = threeToteHeight + Settings.scoringPlatformHeight;
+	double fourToteScoreHeight = fourToteHeight + Settings.scoringPlatformHeight;
 	Joystick driveStick = Robot.driveStick;
 	Joystick lifterStick = Robot.lifterStick;
 	Button toContainerHeight = new JoystickButton(lifterStick, IOLabels.goToContainerHeightButton);
 	Button toToteHeight = new JoystickButton(lifterStick, IOLabels.goToToteHeightButton);
+	Button toTwoToteHeight = new JoystickButton(lifterStick, IOLabels.goToTwoToteHeightButton);
+	Button toThreeToteHeight = new JoystickButton(lifterStick, IOLabels.goToThreeToteHeightButton);
+	Button toFourToteHeight = new JoystickButton(lifterStick, IOLabels.goToFourToteHeightButton);
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
-//	Button turn = new JoystickButton(lifterStick, 7);
+	Button addScoringHeight = new JoystickButton(lifterStick, IOLabels.addScoringHeight);
+	Button turn = new JoystickButton(lifterStick, 7);
 //	Button drive = new JoystickButton(driveStick, 4);
 //	Button toggleGuideArm = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
-//	Button calibrateElevator = new JoystickButton(lifterStick, 12);
-	Button mattIsPickyForTuskUp = new JoystickButton(lifterStick, IOLabels.setGuideArmUp);
-	Button mattIsPickyForTuskDown = new JoystickButton(lifterStick, IOLabels.setGuideArmDown);
+	Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
+//	Button mattIsPickyForTuskDown = new JoystickButton(lifterStick, IOLabels.setGuideArmDown);
 	Button stepTote = new JoystickButton(lifterStick, IOLabels.goToToteStepHeight);
 	Button stepContainer = new JoystickButton(lifterStick, IOLabels.goToContainerStepHeight);
-	Button toTwoToteHeight = new JoystickButton(lifterStick, IOLabels.goToTwoToteHeight);
-	
+//	Button plusOneTote = new JoystickButton(lifterStick, IOLabels.goToPlusOneTote);
+//	Button minusOneTote = new JoystickButton(lifterStick, IOLabels.goToMinusOneTote);
+//	Button goToSetHeight = new JoystickButton(lifterStick, 12);
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to32                                             
     // commands the same as any other Button.
@@ -49,25 +63,57 @@ public class OI {
     // three ways:
     public OI(){	
     
-    if(SmartDashboard.getBoolean("Matt", false)){ 
+//    if(SmartDashboard.getBoolean("Matt", false)){ 
+//    	
+//        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
+//        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
+//    	
+//    } else {
+//    	
+//        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(1));
+//        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(-1));
+//    }
+//    plusOneTote.whenPressed(new ElevatorGoToPosition(elevatorHeightPlusTote));
+//    goToSetHeight.whenPressed(new ElevatorGoToPosition(SmartDashboard.getNumber("Elevator Set Height: ")));
+    shift.whenPressed(new ShiftGears());
+    if(addScoringHeight.get()){
     	
-        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
-        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
+    	toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
+        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(Settings.twoToteHeight));
+        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
+        toFourToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
     	
     } else {
     	
-        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(1));
-        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(-1));
+        toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
+        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteScoreHeight));
+        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteScoreHeight));
+        toFourToteHeight.whenPressed(new ElevatorGoToPosition(threeToteScoreHeight));	
+    	
     }
-    toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteHeight));
+//	toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
 
-    shift.whenPressed(new ShiftGears());
-    toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	
-    toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
+    //    if(plusOneTote.get()){
+//    	numberOfToteIncrements++;
+//    	double expectedPosition;
+//    	expectedPosition = (Settings.actualToteHeight * numberOfToteIncrements) - 6.5;
+//    	plusOneTote.whenPressed(new ElevatorGoToPosition(expectedPosition));
+//    	SmartDashboard.putNumber("Tote Level: ", expectedPosition);
+//    	
+//    }
+    
+    
+    if(toToteHeight.get()){
+    	currentToteLevel = 0;
+    	numberOfToteIncrements = 0;
+    }
     stepTote.whenPressed(new ElevatorGoToPosition(toteStep));
     stepContainer.whenPressed(new ElevatorGoToPosition(containerStep));
-//    toggleGuideArm.whenPressed(new ToggleGuideArm());
-//    calibrateElevator.whenPressed(new ElevatorCalibrate());
+
+    //    toggleGuideArm.whenPressed(new ToggleGuideArm());
+    if(SmartDashboard.getBoolean("Calibrate Elevator: ", false)){
+    	new ElevatorCalibrate();
+    }
 //    turn.whenPressed(new TurnToHeading(Settings.autoTurn));
 //    drive.whenPressed(new DriveToPosition(20));
     	

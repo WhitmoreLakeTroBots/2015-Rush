@@ -1,22 +1,27 @@
 package org.usfirst.frc.team3668.robot.commands;
 
 
+import org.usfirst.frc.team3668.robot.IOLabels;
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class ToggleGuideArm extends Command {
+	Button toggleGuideArm;
 	GuideArm guideArm;
 	int direction;
 	Timer timer;
 	
     public ToggleGuideArm() {
+    	toggleGuideArm = new JoystickButton(Robot.lifterStick, IOLabels.toggleGuideArm);
     	guideArm = Robot.guideArm;
     	requires(guideArm);
     	timer = new Timer();
@@ -24,17 +29,17 @@ public class ToggleGuideArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	timer.reset();
-//    	timer.start();
-//    	if(guideArm.IsDeployed()){
-//    		
-//    		direction = -1;
-//    		
-//    	} else {
-//    		
-//    		direction = 1;
-//    		
-//    	}
+    	timer.reset();
+    	timer.start();
+    	if(guideArm.IsDeployed()){
+    		
+    		direction = -1;
+    		
+    	} else {
+    		
+    		direction = 1;
+    		
+    	}
 //    	
     }
 
@@ -47,7 +52,7 @@ public class ToggleGuideArm extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > Settings.guideArmMotorRunTime;
+        return timer.get() > Settings.guideArmMotorRunTime || toggleGuideArm.get();
     }
 
     // Called once after isFinished returns true
