@@ -78,17 +78,17 @@ public class OI {
     shift.whenPressed(new ShiftGears());
     if(addScoringHeight.get()){
     	
-    	toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
-        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(Settings.twoToteHeight));
-        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
-        toFourToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
+    	toToteHeight.whenPressed(new ElevatorGoToPosition(toteStep));
+        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteScoreHeight));
+        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteScoreHeight));
+        toFourToteHeight.whenPressed(new ElevatorGoToPosition(fourToteScoreHeight));
     	
     } else {
     	
         toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
-        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteScoreHeight));
-        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteScoreHeight));
-        toFourToteHeight.whenPressed(new ElevatorGoToPosition(threeToteScoreHeight));	
+        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteHeight));
+        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
+        toFourToteHeight.whenPressed(new ElevatorGoToPosition(fourToteHeight));	
     	
     }
 //	toContainerHeight.whenPressed(new ElevatorGoToPosition(Settings.containerHeight));	

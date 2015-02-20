@@ -1,12 +1,11 @@
 
 package org.usfirst.frc.team3668.robot;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-//import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+//import java.io.IOException;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardOpenOption;
 
 import org.usfirst.frc.team3668.robot.commands.AutonomousCommandSequence;
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
@@ -24,6 +23,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import java.io.FileWriter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -117,6 +117,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+//    	Path path = Paths.get("/u/HelloWorld.txt");
+//    	 try {
+//			Files.write(path, ("X ").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("File write failed!");
+//		}
         Scheduler.getInstance().run();
         System.out.println(elevatorCalibrate.isCalibrated());
         
