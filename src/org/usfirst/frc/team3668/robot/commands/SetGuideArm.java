@@ -16,6 +16,7 @@ public class SetGuideArm extends Command {
 	int direction;
 	Timer timer;
 	
+	
     public SetGuideArm(int direction) {
     	guideArm = Robot.guideArm;
     	requires(guideArm);

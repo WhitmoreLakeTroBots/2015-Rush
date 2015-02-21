@@ -52,7 +52,7 @@ public class ToggleGuideArm extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > Settings.guideArmMotorRunTime || toggleGuideArm.get();
+        return timer.get() > Settings.guideArmMotorRunTime;
     }
 
     // Called once after isFinished returns true

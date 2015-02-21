@@ -120,7 +120,7 @@ public class Elevator extends Subsystem {
 	
 	public double currentHeight(){
 		
-		return elevatorMotorEncoder.getDistance();	
+		return elevatorMotorEncoder.getDistance();
 	}
 	
 	

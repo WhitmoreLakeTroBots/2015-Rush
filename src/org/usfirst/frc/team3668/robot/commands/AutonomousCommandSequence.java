@@ -42,7 +42,7 @@ public class AutonomousCommandSequence extends CommandGroup {
         	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
         	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
-        	addSequential(new TurnToHeading(Settings.autoFinalHeading));
+        	addSequential(new TurnToHeading(Settings.autoAlmostFinalHeading));
     	} else {
 
 //        	addSequential(calibrateTote);
@@ -57,8 +57,10 @@ public class AutonomousCommandSequence extends CommandGroup {
         	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
         	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
+        	addSequential(new TurnToHeading(Settings.autoAlmostFinalHeading));
+        	addSequential(new ElevatorGoToPosition(Settings.bottomElevator));
+        	addSequential(new DriveToPositionWithHeading(Settings.retreatDistance, Settings.autoAlmostFinalHeading));
         	addSequential(new TurnToHeading(Settings.autoFinalHeading));
-    		
     		
     	}
         // To run multiple commands at the same time,

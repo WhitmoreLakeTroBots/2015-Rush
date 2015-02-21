@@ -33,8 +33,11 @@ public class Settings {
 	public static final double autoDriveSpeed = 1;
 	public static final double autoStepHeight = 6.25;
 	public static final double autoTurn = 0;
-	public static final double autoFinalHeading = 90;
+	public static final double autoAlmostFinalHeading = 90;
+	public static final double autoFinalHeading = 180;
 	public static final int autoGuideArmDirection = -1;
+	public static final double bottomElevator = 0;
+	public static final double retreatDistance = -6;
 	
 	//Other Settings
 	public static final double sideDriveSpeed = 0.5;

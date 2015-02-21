@@ -17,6 +17,7 @@ public class JoystickSideDrive extends Command {
 	SideDrive sideDrive;
 	JoystickButton rightDrive;
 	JoystickButton leftDrive;
+	JoystickButton slowSpeed;
 	public JoystickSideDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,7 +26,7 @@ public class JoystickSideDrive extends Command {
     	driverStick = Robot.driveStick;
     	leftDrive = new JoystickButton(driverStick, IOLabels.leftDriveButton);
     	rightDrive = new JoystickButton(driverStick, IOLabels.rightDriveButton);
-	
+    	slowSpeed = new JoystickButton(driverStick, IOLabels.slowSideDrive);
 	}
 
     // Called just before this Command runs the first time
@@ -37,21 +38,37 @@ public class JoystickSideDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(slowSpeed.get()){
     	
+    		if(leftDrive.get()){
+            	
+        		sideDrive.sideDrive(Settings.sideDriveSpeed );
+        		
+        	} else if(rightDrive.get()){
+        		
+        		sideDrive.sideDrive(-Settings.sideDriveSpeed);
+        		
+        	} else {
+        		
+        		sideDrive.sideDrive(0);
+        		
+        	}
+    		
+    	} else {
     	if(leftDrive.get()){
         	
-    		sideDrive.sideDrive(Settings.sideDriveSpeed);
+    		sideDrive.sideDrive(Settings.sideDriveSpeed* 1.5);
     		
     	} else if(rightDrive.get()){
     		
-    		sideDrive.sideDrive(-Settings.sideDriveSpeed);
+    		sideDrive.sideDrive(-Settings.sideDriveSpeed* 1.5);
     		
     	} else {
     		
     		sideDrive.sideDrive(0);
     		
     	}
-    	
+    	}
     	
     	
     }

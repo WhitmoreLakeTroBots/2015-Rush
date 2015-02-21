@@ -31,6 +31,7 @@ public class IOLabels {
 	public static final int shiftGearsButton = 1;
 	public static final int leftDriveButton = 9;
 	public static final int rightDriveButton = 10;
+	public static final int slowSideDrive = 2;
 		//Lifter Joystick
 	public static final int toggleGuideArm = 1;
 	public static final int goToToteHeightButton = 5;

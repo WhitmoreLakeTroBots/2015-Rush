@@ -1,11 +1,14 @@
 
 package org.usfirst.frc.team3668.robot;
 
-//import java.io.IOException;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//import java.nio.file.StandardOpenOption;
+import java.io.IOException;
+//import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+//import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Date;
 
 import org.usfirst.frc.team3668.robot.commands.AutonomousCommandSequence;
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
@@ -50,11 +53,21 @@ public class Robot extends IterativeRobot {
 
     ElevatorCalibrate elevatorCalibrate;
     SmartDashboard smartDashboard;
+	Path path = Paths.get("/u/HelloWorld.txt");
+	int counter;
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+		try {
+			Files.write(path, ("\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		counter = 0;
 //        try {
 //        	File file = new File("/u/HelloWorld.txt");
 //        	FileOutputStream fos = new FileOutputStream(file,true);
@@ -117,13 +130,23 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-//    	Path path = Paths.get("/u/HelloWorld.txt");
-//    	 try {
-//			Files.write(path, ("X ").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("File write failed!");
-//		}
+//    	String joystickReadout = Double.toString(driveStick.getAxis(Joystick.AxisType.kY));
+    	counter++;
+    	Date date = new Date();
+    	if((counter % 25 == 0)){
+    		
+    		try {
+        		Files.write(path, ("\n" + date.toString() + "\n").getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    			Files.write(path, ("Current Elevator Position: " + Double.toString(elevator.currentHeight()) + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    			Files.write(path, ("Robot Heading: " + Double.toString(forwardDrive.GetRobotHeading()) + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    			Files.write(path, ("\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        	} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			System.out.println("File write failed!");
+    		}
+    		
+    	}
+    	
         Scheduler.getInstance().run();
         System.out.println(elevatorCalibrate.isCalibrated());
         
