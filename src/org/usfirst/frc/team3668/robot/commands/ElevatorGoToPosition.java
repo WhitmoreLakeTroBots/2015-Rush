@@ -1,9 +1,12 @@
 package org.usfirst.frc.team3668.robot.commands;
 
+import org.usfirst.frc.team3668.robot.IOLabels;
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.subsystems.Elevator;
 
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,17 +17,27 @@ public class ElevatorGoToPosition extends Command {
 	double targetHeight;
 	Elevator elevator;
 	double startPosition;
+	Button addScoringHeight;
+	double baseHeight;
     public ElevatorGoToPosition(double targetHeight) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	elevator = Robot.elevator;
     	requires(elevator);
     	this.targetHeight = targetHeight;
+    	addScoringHeight = new JoystickButton(Robot.lifterStick, IOLabels.addScoringHeight);
+    	baseHeight = targetHeight;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	startPosition = elevator.currentHeight();
+    	targetHeight = baseHeight;
+    	if(addScoringHeight.get()){
+    		
+    		targetHeight = targetHeight + Settings.scoringPlatformHeight;
+    		
+    	}
     	
     	
     }
@@ -81,16 +94,12 @@ public class ElevatorGoToPosition extends Command {
     	}
     	
     	
-    	
-    	SmartDashboard.putNumber("Height Error: ", heightError);
-    	SmartDashboard.putNumber("Motor Command: ", motorCommand);
-    	SmartDashboard.putNumber("Motor Command From Start: ", motorCommandFromStart);
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	double heightError = elevator.currentHeight() - targetHeight; 
-    	SmartDashboard.putBoolean("Is Finished: ",  Math.abs(heightError) < Settings.elevatorDistanceTolerance);
     	return Math.abs(heightError) < Settings.elevatorDistanceTolerance;
     }
 

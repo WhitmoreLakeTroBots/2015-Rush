@@ -20,7 +20,9 @@ public class Settings {
 	//Pre-determined Heights
 	public static final double toteHeight = .5;
 	public static final double containerHeight = 11.5;
-	public static final double twoToteHeight = 24;
+	public static final double twoToteHeight = 11.65;
+	public static final double threeToteHeight = 23.183;
+	public static final double fourToteHeight = 34.71;
 	public static final double actualToteHeight = 12;
 	
 	//Autonomous Settings
@@ -39,6 +41,7 @@ public class Settings {
 	public static final double bottomElevator = 0;
 	public static final double retreatDistance = -6;
 	
+	
 	//Other Settings
 	public static final double sideDriveSpeed = 0.5;
 	public static final double turnSensitivityMultiplier = .8;
@@ -50,9 +53,9 @@ public class Settings {
 	public static final double turnSlowDownAngle = 20;
 	public static final double minimumTurnSpeed = 0.4;
 	public static final double driveTurnGain = 0.1;
-	public static final double guideArmMotorSpeed = 0.25;
-	public static final double guideArmMotorRunTime = 2.5;
-	public static final double scoringPlatformHeight = 1.96;
+	public static final double guideArmMotorSpeed = 0.45; //Previously .25
+	public static final double guideArmMotorRunTime = 1.2; // Previously 2.5
+	public static final double scoringPlatformHeight = 2;
 	
 	
 }

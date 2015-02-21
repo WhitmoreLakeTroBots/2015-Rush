@@ -36,59 +36,30 @@ public class OI {
 	Button toTwoToteHeight = new JoystickButton(lifterStick, IOLabels.goToTwoToteHeightButton);
 	Button toThreeToteHeight = new JoystickButton(lifterStick, IOLabels.goToThreeToteHeightButton);
 	Button toFourToteHeight = new JoystickButton(lifterStick, IOLabels.goToFourToteHeightButton);
-//	Button addScoringHeight = new JoystickButton(lifterStick, IOLabels.addScoringHeight);
-	Button stepTote = new JoystickButton(lifterStick, IOLabels.goToToteStepHeight);
-	Button stepContainer = new JoystickButton(lifterStick, IOLabels.goToContainerStepHeight);
-	
+	Button toOneToteStepHeight = new JoystickButton(lifterStick, IOLabels.goToOneToteStepHeight);
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
-	Button turn = new JoystickButton(lifterStick, 7);
-//	Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
-	Button guideUp = new JoystickButton(lifterStick, 1);
-	Button guideDown = new JoystickButton(lifterStick, 2);
+
+	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
 
 
-    public OI(){	
-    
-//    if(SmartDashboard.getBoolean("Matt", false)){ 
-//    	
-//        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(-1));
-//        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(1));
-//    	
-//    } else {
-//    	
-//        mattIsPickyForTuskUp.whenPressed(new SetGuideArm(1));
-//        mattIsPickyForTuskDown.whenPressed(new SetGuideArm(-1));
-//    }
-//    plusOneTote.whenPressed(new ElevatorGoToPosition(elevatorHeightPlusTote));
-//    goToSetHeight.whenPressed(new ElevatorGoToPosition(SmartDashboard.getNumber("Elevator Set Height: ")));
+    public OI(){
+        ToggleGuideArm tg = new ToggleGuideArm();
 
-    shift.whenPressed(new ShiftGears());
-    guideUp.whenPressed(new SetGuideArm(1));
-    guideDown.whenPressed(new SetGuideArm(-1));
-//    if(addScoringHeight.get()){
-//    	
-//    	toToteHeight.whenPressed(new ElevatorGoToPosition(toteStep));
-//        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteStepHeight));
-//        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteStepHeight));
-//        toFourToteHeight.whenPressed(new ElevatorGoToPosition(fourToteStepHeight));
-//    	
-//        
-//    } else {
-    	
-    	
+    	toOneToteStepHeight.whenPressed(new ElevatorGoToPosition(Settings.scoringPlatformHeight));
+    	shift.whenPressed(new ShiftGears());    	
         toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
-        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(twoToteHeight));
-        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(threeToteHeight));
-        toFourToteHeight.whenPressed(new ElevatorGoToPosition(fourToteHeight));	
-    	
+        toTwoToteHeight.whenPressed(new ElevatorGoToPosition(Settings.twoToteHeight));
+        toThreeToteHeight.whenPressed(new ElevatorGoToPosition(Settings.threeToteHeight));
+        toFourToteHeight.whenPressed(new ElevatorGoToPosition(Settings.fourToteHeight));	
+        mattIsPickyForTuskToggle.cancelWhenPressed(tg);
+        mattIsPickyForTuskToggle.whenPressed(tg);
+        
+//    if(toToteHeight.get()){
+//    	currentToteLevel = 0;
+//    	numberOfToteIncrements = 0;
 //    }
-//    mattIsPickyForTuskToggle.whenPressed(new ToggleGuideArm());
-    if(toToteHeight.get()){
-    	currentToteLevel = 0;
-    	numberOfToteIncrements = 0;
-    }
-    stepTote.whenPressed(new ElevatorGoToPosition(toteStep));
-    stepContainer.whenPressed(new ElevatorGoToPosition(containerStep));
+//    stepTote.whenPressed(new ElevatorGoToPosition(toteStep));
+//    stepContainer.whenPressed(new ElevatorGoToPosition(containerStep));
 
     SmartDashboard.putData("Calibrate the Elevator: ", new ElevatorCalibrate());
 

@@ -7,6 +7,7 @@ import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,6 +16,7 @@ public class SetGuideArm extends Command {
 	GuideArm guideArm;
 	int direction;
 	Timer timer;
+
 	
 	
     public SetGuideArm(int direction) {
@@ -27,7 +29,7 @@ public class SetGuideArm extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	timer.reset();
-    	timer.start();
+    	timer.start();    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,7 +48,7 @@ public class SetGuideArm extends Command {
     protected void end() {
     	timer.stop();
     	guideArm.MoveArms(0);
-    	guideArm.SetDeployed(direction == 1);
+ 
     	
     }
 

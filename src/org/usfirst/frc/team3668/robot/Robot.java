@@ -49,7 +49,6 @@ public class Robot extends IterativeRobot {
 	public static AnalogInput autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
 
     AutonomousCommandSequence autonomousCommand;
-//	AnalogInput autonomousSwitch;
 
     ElevatorCalibrate elevatorCalibrate;
     SmartDashboard smartDashboard;
@@ -68,19 +67,6 @@ public class Robot extends IterativeRobot {
 			e.printStackTrace();
 		}
 		counter = 0;
-//        try {
-//        	File file = new File("/u/HelloWorld.txt");
-//        	FileOutputStream fos = new FileOutputStream(file,true);
-//        	OutputStreamWriter osw = new OutputStreamWriter(fos);
-//			BufferedWriter fw = new BufferedWriter(osw);
-//			
-//			fw.write(" PROGRAMMERS RULE and also Dimitri Mendelev");
-//			fw.close();
-//        } catch (IOException e) {
-//			e.printStackTrace();
-//		} finally{
-//		
-//		}
 		oi = new OI();
         // instantiate the command used for the autonomous period
         elevatorCalibrate = new ElevatorCalibrate();
@@ -96,7 +82,6 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new  AutonomousCommandSequence();
     	forwardDrive.InitGyro();
     	if (autonomousCommand != null) autonomousCommand.start();
-//        if (elevatorCalibrate !=null) elevatorCalibrate.start();
       
         
     }
@@ -114,7 +99,6 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-//        if (elevatorCalibrate !=null) elevatorCalibrate.start();
     }
 
     /**
@@ -137,8 +121,8 @@ public class Robot extends IterativeRobot {
     		
     		try {
         		Files.write(path, ("\n" + date.toString() + "\n").getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-    			Files.write(path, ("Current Elevator Position: " + Double.toString(elevator.currentHeight()) + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-    			Files.write(path, ("Robot Heading: " + Double.toString(forwardDrive.GetRobotHeading()) + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    			Files.write(path, ("Current Elevator Position: " + elevator.currentHeight() + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+    			Files.write(path, ("Robot Heading: " + forwardDrive.GetRobotHeading() + "\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
     			Files.write(path, ("\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         	} catch (IOException e) {
     			// TODO Auto-generated catch block

@@ -30,17 +30,9 @@ public class JoystickElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	if(Math.signum(lifterStick.getAxis(Joystick.AxisType.kY)) == 1){
     		
         	elevator.raiseLower(lifterStick.getAxis(Joystick.AxisType.kY));
 
-    		
-//    	}
-    		
-//		elevator.raiseLower(Robot.lifterStick.getAxis(Joystick.AxisType.kY));
-    	
-//    	SmartDashboard.putNumber("Joystick: ", Robot.lifterStick.getAxis(Joystick.AxisType.kY));
-//    	SmartDashboard.putBoolean("Is at bottom:" , elevator.isAtBottom());
     }
     
 

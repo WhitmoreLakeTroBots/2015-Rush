@@ -40,7 +40,7 @@ public class ToggleGuideArm extends Command {
     		direction = 1;
     		
     	}
-//    	
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -59,7 +59,6 @@ public class ToggleGuideArm extends Command {
     protected void end() {
     	timer.stop();
     	guideArm.MoveArms(0);
-    	guideArm.SetDeployed(direction == 1);
     	
     }
 

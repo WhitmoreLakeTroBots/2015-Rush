@@ -24,14 +24,14 @@ public class GuideArm extends Subsystem {
 	public void MoveArms(int direction){
 		
 		guideArmMotor.set(-direction * Settings.guideArmMotorSpeed);
+		if(direction != 0){
+			
+			isDeployed = (direction == 1);
+			
+		}
 		
 	}
 	
-	public void SetDeployed(boolean deployed){
-		
-		isDeployed = deployed;
-		
-	}
 	
 	public boolean IsDeployed(){
 		
