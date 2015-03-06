@@ -23,7 +23,7 @@ public class SideDrive extends Subsystem {
 	}
 	
 	public void sideDrive(double speed){
-		sideDriveMotor.set(SpeedScaler.scaledSpeed(speed, Settings.universalSpeedScaleFactor));
+		sideDriveMotor.set(speed);
 	}
 	
     public void initDefaultCommand() {
