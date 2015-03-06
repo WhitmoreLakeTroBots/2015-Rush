@@ -3,6 +3,7 @@ package org.usfirst.frc.team3668.robot.subsystems;
 import org.usfirst.frc.team3668.robot.IOLabels;
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
+import org.usfirst.frc.team3668.robot.SpeedScaler;
 import org.usfirst.frc.team3668.robot.commands.JoystickForwardDrive;
 
 import edu.wpi.first.wpilibj.Encoder;

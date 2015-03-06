@@ -58,12 +58,12 @@ public class AutonomousCommandSequence extends CommandGroup {
         	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
         	addSequential(new TurnToHeading(Settings.autoAlmostFinalHeading));
-        	addSequential(new ElevatorGoToPosition(Settings.bottomElevator));
-        	addSequential(new DriveToPositionWithHeading(Settings.retreatDistance, Settings.autoAlmostFinalHeading));
-        	addSequential(new TurnToHeading(Settings.autoFinalHeading));
+//        	addSequential(new ElevatorGoToPosition(Settings.bottomElevator));
+//        	addSequential(new DriveToPositionWithHeading(Settings.retreatDistance, Settings.autoAlmostFinalHeading));
+//        	addSequential(new TurnToHeading(Settings.autoFinalHeading));
     		
     	}
-        // To run multiple commands at the same time,
+    	// To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());

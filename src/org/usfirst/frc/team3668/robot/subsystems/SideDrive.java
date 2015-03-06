@@ -1,10 +1,13 @@
 package org.usfirst.frc.team3668.robot.subsystems;
 
 import org.usfirst.frc.team3668.robot.IOLabels;
+import org.usfirst.frc.team3668.robot.Settings;
+import org.usfirst.frc.team3668.robot.SpeedScaler;
 import org.usfirst.frc.team3668.robot.commands.JoystickSideDrive;
 
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,7 +23,7 @@ public class SideDrive extends Subsystem {
 	}
 	
 	public void sideDrive(double speed){
-		sideDriveMotor.set(speed);
+		sideDriveMotor.set(SpeedScaler.scaledSpeed(speed, Settings.universalSpeedScaleFactor));
 	}
 	
     public void initDefaultCommand() {

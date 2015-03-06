@@ -60,6 +60,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	SmartDashboard.putNumber("Speed Scaling Factor: ", 1);
+    	SmartDashboard.putNumber("Side Speed Scaling Factor: ", 1);
+    	SmartDashboard.putNumber("Elevator Speed Scaling Factor: ", 1);
+    	
 		try {
 			Files.write(path, ("\n").getBytes("utf-8"), StandardOpenOption.WRITE,StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {

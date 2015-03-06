@@ -1,6 +1,8 @@
 package org.usfirst.frc.team3668.robot.commands;
 
 import org.usfirst.frc.team3668.robot.Robot;
+import org.usfirst.frc.team3668.robot.Settings;
+import org.usfirst.frc.team3668.robot.SpeedScaler;
 import org.usfirst.frc.team3668.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -31,7 +33,7 @@ public class JoystickElevator extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     		
-        	elevator.raiseLower(lifterStick.getAxis(Joystick.AxisType.kY));
+        	elevator.raiseLower(SpeedScaler.scaledSpeed(lifterStick.getAxis(Joystick.AxisType.kY), Settings.universalSpeedScaleFactor));
 
     }
     

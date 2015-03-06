@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3668.robot.commands;
 
 import org.usfirst.frc.team3668.robot.Robot;
+import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -33,7 +34,7 @@ public class ElevatorCalibrate extends Command {
     	
     	if(!isFinished()){
     		
-    		elevator.raiseLower(.25);
+    		elevator.raiseLower(Settings.elevatorCalibrateSpeed);
     		
     	}
     	

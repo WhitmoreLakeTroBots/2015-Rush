@@ -56,6 +56,10 @@ public class Settings {
 	public static final double guideArmMotorSpeed = 0.45; //Previously .25
 	public static final double guideArmMotorRunTime = 1.2; // Previously 2.5
 	public static final double scoringPlatformHeight = 2;
+	public static final double normalDriveSpeed = 1;
+	public static final double slowedDriveSpeed = 0.6;
+	public static final double universalSpeedScaleFactor = 2;
+	public static final double elevatorCalibrateSpeed = .5;
 	
 	
 }
