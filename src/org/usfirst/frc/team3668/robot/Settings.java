@@ -19,10 +19,10 @@ public class Settings {
 	
 	//Pre-determined Heights
 	public static final double toteHeight = .5;
-	public static final double containerHeight = 11.5;
-	public static final double twoToteHeight = 11.65;
-	public static final double threeToteHeight = 23.183;
-	public static final double fourToteHeight = 34.71;
+	public static final double containerHeight = 11.25;
+	public static final double twoToteHeight = 11.4;
+	public static final double threeToteHeight = 22.933;
+	public static final double fourToteHeight = 34.46;
 	public static final double actualToteHeight = 12;
 	
 	//Autonomous Settings
@@ -43,7 +43,7 @@ public class Settings {
 	
 	
 	//Other Settings
-	public static final double sideDriveSpeed = 0.5;
+	public static final double sideDriveSpeed = 0.5;     //!!!!!!!!!!!DONT GO OVER.75 !!!!!!!!!!!
 	public static final double turnSensitivityMultiplier = .8;
 	public static final double turnDeadband = 2;
 	public static final double DriveEncoderScaleFactor = 6*Math.PI/279; //6 in wheel, 275 ticks per revolution of the wheel, .0685 in per tick
@@ -54,7 +54,7 @@ public class Settings {
 	public static final double minimumTurnSpeed = 0.4;
 	public static final double driveTurnGain = 0.1;
 	public static final double guideArmMotorSpeed = 0.45; //Previously .25
-	public static final double guideArmMotorRunTime = 1.2; // Previously 2.5
+	public static final double guideArmMotorRunTime = 1.15; // Previously 2.5
 	public static final double scoringPlatformHeight = 2;
 	public static final double normalDriveSpeed = 1;
 	public static final double slowedDriveSpeed = 0.6;

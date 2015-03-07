@@ -32,7 +32,7 @@ public class ForwardDrive extends Subsystem {
 	Servo leftGearShiftServo;
 	RobotDrive chassis;
 	Joystick driveStick;
-	Gyro gyro;
+	public Gyro gyro;
 	boolean isInLowGear;
 	double initialGyroPosition;
 	public ForwardDrive(){

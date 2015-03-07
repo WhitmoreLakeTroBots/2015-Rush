@@ -40,7 +40,7 @@ public class AutonomousCommandSequence extends CommandGroup {
         	addSequential(new DriveToPosition(Settings.autoContainerDriveDistance));
     		addSequential(new ElevatorGoToPosition(Settings.containerHeight));
         	addSequential(new ElevatorGoToPosition(Settings.autoContainerLift));
-        	addSequential(new TurnToHeading(Settings.autoTurn));
+//        	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
         	addSequential(new TurnToHeading(Settings.autoAlmostFinalHeading));
     	} else {
@@ -55,7 +55,7 @@ public class AutonomousCommandSequence extends CommandGroup {
     		addSequential(calibrateTote);
         	addSequential(stepOneForTotes);
         	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
-        	addSequential(new TurnToHeading(Settings.autoTurn));
+//        	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));
         	addSequential(new TurnToHeading(Settings.autoAlmostFinalHeading));
 //        	addSequential(new ElevatorGoToPosition(Settings.bottomElevator));

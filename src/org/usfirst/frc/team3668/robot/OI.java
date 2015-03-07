@@ -2,6 +2,7 @@ package org.usfirst.frc.team3668.robot;
 
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
+import org.usfirst.frc.team3668.robot.commands.ResetGyro;
 import org.usfirst.frc.team3668.robot.commands.SetGuideArm;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
@@ -38,7 +39,7 @@ public class OI {
 	Button toFourToteHeight = new JoystickButton(lifterStick, IOLabels.goToFourToteHeightButton);
 	Button toOneToteStepHeight = new JoystickButton(lifterStick, IOLabels.goToOneToteStepHeight);
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
-
+	Button GyroReset = new JoystickButton(driveStick,IOLabels.gyroReset);
 	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
 
 
@@ -60,8 +61,9 @@ public class OI {
 //    }
 //    stepTote.whenPressed(new ElevatorGoToPosition(toteStep));
 //    stepContainer.whenPressed(new ElevatorGoToPosition(containerStep));
-
+//        GyroReset.whenPressed(new ResetGyro());
     SmartDashboard.putData("Calibrate the Elevator: ", new ElevatorCalibrate());
+    SmartDashboard.putData("Calibrate the Gyro: ", new ResetGyro());
 
     }
 
