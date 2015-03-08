@@ -5,7 +5,7 @@ import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.subsystems.ForwardDrive;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -48,11 +48,11 @@ public class DriveToPosition extends Command {
 		
 		
 
-		SmartDashboard.putNumber("Drive Distance Error: ", distanceError);
-		SmartDashboard.putBoolean("Finished travelling distance:", Math.abs(distanceError) < Settings.driveToPositionDeadband);
-		SmartDashboard.putNumber("Drive Encoder Average", (LeftTraveled() + RightTraveled()) / 2);
-		SmartDashboard.putNumber("Left Drive Distance", LeftTraveled());
-		SmartDashboard.putNumber("Right Drive Distance", RightTraveled());
+//		SmartDashboard.putNumber("Drive Distance Error: ", distanceError);
+//		SmartDashboard.putBoolean("Finished travelling distance:", Math.abs(distanceError) < Settings.driveToPositionDeadband);
+//		SmartDashboard.putNumber("Drive Encoder Average", (LeftTraveled() + RightTraveled()) / 2);
+//		SmartDashboard.putNumber("Left Drive Distance", LeftTraveled());
+//		SmartDashboard.putNumber("Right Drive Distance", RightTraveled());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

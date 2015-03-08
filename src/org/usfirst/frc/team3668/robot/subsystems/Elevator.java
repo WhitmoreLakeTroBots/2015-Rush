@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -81,15 +81,15 @@ public class Elevator extends Subsystem {
 				elevatorMotor.set(vector);
 				
 			}
-			SmartDashboard.putBoolean("Can Move?", true);
+//			SmartDashboard.putBoolean("Can Move?", true);
 			
 		} else {
 
-			SmartDashboard.putBoolean("Can Move?", false);
+//			SmartDashboard.putBoolean("Can Move?", false);
 			elevatorMotor.set(0);
 			
 		}
-		SmartDashboard.putNumber("Current Elevator Encoder Position: ", elevatorMotorEncoder.getDistance());
+//		SmartDashboard.putNumber("Current Elevator Encoder Position: ", elevatorMotorEncoder.getDistance());
 //		SmartDashboard.putNumber("Elevator Encoder Raw: ", elevatorMotorEncoder.get());
 //		SmartDashboard.putNumber("Current Counter: ", counter.get());
 //		System.out.println("Current Counter: " + counter.get());
@@ -98,53 +98,57 @@ public class Elevator extends Subsystem {
 //		
 
 		if(direction == 1){
-			
 			elevatorLowerSwitchCounter.reset();
-			
-			
 		}
 		if(direction == -1){
-			
 			elevatorUpperSwitchCounter.reset();
-			
 		}
-		
-		
 	}
 	
 	public void calibrateEncoder(){
-		
 		elevatorMotorEncoder.reset();
-		
 	}
 	
 	public double currentHeight(){
-		
 		return elevatorMotorEncoder.getDistance();
 	}
 	
 	
 	
 	public boolean isAtBottom(){
-		
 		switchAtBottom = !elevatorLowerSwitch.get();
 		counterAtBottom = elevatorLowerSwitchCounter.get() > 0;
 		return counterAtBottom || switchAtBottom;
-		
 	}
 	
 	public boolean isAtTop(){
-		
 		switchAtTop = !elevatorUpperSwitch.get();
 		counterAtTop =  elevatorUpperSwitchCounter.get() > 0;
 		return counterAtTop || switchAtTop;
-		
+	}
+	
+	public double GetMotorValue() {
+		return elevatorMotor.get();
+	}
+	
+	public boolean GetUpperSwitch(){
+		return elevatorUpperSwitch.get();
+	}
+	
+	public int GetUpperCounter(){
+		return elevatorUpperSwitchCounter.get();
+	}
+	
+	public boolean GetLowerSwitch(){
+		return elevatorLowerSwitch.get();
+	}
+	
+	public int GetLowerCounter(){
+		return elevatorLowerSwitchCounter.get();
 	}
 	
     protected boolean canMove(double direction, double requestedDirection){
-    	
     	return !(isAtBottom() && requestedDirection == -1) && !(isAtTop() && requestedDirection == 1);
-    	
     }
 	
 	

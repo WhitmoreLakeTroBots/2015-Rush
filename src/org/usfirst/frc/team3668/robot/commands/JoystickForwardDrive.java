@@ -1,13 +1,12 @@
 package org.usfirst.frc.team3668.robot.commands;
 
-import org.usfirst.frc.team3668.robot.IOLabels;
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.SpeedScaler;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+//import edu.wpi.first.wpilibj.buttons.Button;
+//import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

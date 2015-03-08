@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3668.robot;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Settings {
 
 	//Elevator Settings
@@ -61,5 +64,6 @@ public class Settings {
 	public static final double universalSpeedScaleFactor = 2;
 	public static final double elevatorCalibrateSpeed = .5;
 	
-	
+	public static final Path path = Paths.get("/u/RobotLog.txt");
+
 }

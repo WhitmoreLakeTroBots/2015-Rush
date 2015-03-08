@@ -3,7 +3,6 @@ package org.usfirst.frc.team3668.robot.subsystems;
 import org.usfirst.frc.team3668.robot.IOLabels;
 import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
-import org.usfirst.frc.team3668.robot.SpeedScaler;
 import org.usfirst.frc.team3668.robot.commands.JoystickForwardDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -13,7 +12,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -35,6 +34,7 @@ public class ForwardDrive extends Subsystem {
 	public Gyro gyro;
 	boolean isInLowGear;
 	double initialGyroPosition;
+	
 	public ForwardDrive(){
 		leftEncoder = new Encoder(IOLabels.driveEncoderLeftAPort, IOLabels.driveEncoderLeftBPort);
 		rightEncoder = new Encoder(IOLabels.driveEncoderRightAPort, IOLabels.driveEncoderRightBPort);
@@ -56,16 +56,14 @@ public class ForwardDrive extends Subsystem {
 	}
 	
 	public void InitGyro(){
-		
 		initialGyroPosition = gyro.getAngle();
-		
 	}
 		
 	public void Drive(double speed, double turn){
 			chassis.arcadeDrive(speed, turn);
-			SmartDashboard.putNumber("Left Drive Encoder: ", leftEncoder.getDistance());
-			SmartDashboard.putNumber("Right Drive Encoder: ", rightEncoder.getDistance());
-			SmartDashboard.putNumber("Robot Angle: ", GetRobotHeading());
+//			SmartDashboard.putNumber("Left Drive Encoder: ", leftEncoder.getDistance());
+//			SmartDashboard.putNumber("Right Drive Encoder: ", rightEncoder.getDistance());
+//			SmartDashboard.putNumber("Robot Angle: ", GetRobotHeading());
 	}
 	
 	public void ShiftGears(){
@@ -89,33 +87,45 @@ public class ForwardDrive extends Subsystem {
 	}
 	
 	
-	public void TestServos(double degrees){
-		rightGearShiftServo.setAngle(degrees*270);
-		leftGearShiftServo.setAngle(degrees*270);
-		SmartDashboard.putNumber("Degree of Servo:", degrees*270);
-	}
+//	public void TestServos(double degrees){
+//		rightGearShiftServo.setAngle(degrees*270);
+//		leftGearShiftServo.setAngle(degrees*270);
+//		SmartDashboard.putNumber("Degree of Servo:", degrees*270);
+//	}
 	
 	public double GetRightEncoder(){
-		
 		return rightEncoder.getDistance();
-		
 	}
 	
 	public double GetLeftEncoder(){
-		
 		return leftEncoder.getDistance();
-		
 	}
 	
 	public double GetRobotHeading(){
-		
 		return gyro.getAngle() - initialGyroPosition;
-		
+	}
+	
+	public double GetLeftDriveOneValue() {
+		return leftOne.get();
+	}
+	
+	public double GetLeftDriveTwoValue() {
+		return leftTwo.get();
+	}
+	
+	public double GetRightDriveOneValue() {
+		return rightOne.get();
+	}
+	
+	public double GetRightDriveTwoValue() {
+		return rightTwo.get();
+	}
+	
+	public boolean GetIsInLowGear() {
+		return isInLowGear;
 	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new JoystickForwardDrive());
     }
 }

@@ -3,7 +3,6 @@ package org.usfirst.frc.team3668.robot;
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
 import org.usfirst.frc.team3668.robot.commands.ResetGyro;
-import org.usfirst.frc.team3668.robot.commands.SetGuideArm;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
 
