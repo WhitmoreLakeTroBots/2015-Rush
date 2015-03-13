@@ -42,10 +42,11 @@ public class IOLabels {
 	public static final int goToTwoToteHeightButton = 11;
 	public static final int goToContainerHeightButton = 6;
 	public static final int goToOneToteStepHeight = 12;
+	public static final int bottomElevatorButton = 10;
 //	public static final int goToContainerStepHeight = 4;
 //	public static final int goToToteStepHeight = 3;
-	public static final int goToPlusOneTote = 7;
-	public static final int goToMinusOneTote = 8;
+//	public static final int goToPlusOneTote = 7;
+//	public static final int goToMinusOneTote = 8;
 	public static final int addScoringHeight= 2;
 	
 //	Other Ports

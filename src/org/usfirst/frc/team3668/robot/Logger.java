@@ -3,11 +3,11 @@ package org.usfirst.frc.team3668.robot;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-import java.text.DateFormat;
-import java.util.Date;
+
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Logger {
-	
 	private static final String comma = ",";
 	
 	public static void InitFile() {
@@ -27,7 +27,7 @@ public class Logger {
 					+ comma + "DriveLeftOneMotorValue"
 					+ comma + "DriveLeftTwoMotorValue"
 					+ comma + "DriveRightOneMotorValue"
-					+ comma + "DriveRightTwoVMotoralue"
+					+ comma + "DriveRightTwoMotorValue"
 					+ comma + "DriveIsInLowGear"
 					+ comma + "SideDriveMotorValue"
 					+ comma + "GuideArmIsDeployed"
@@ -41,7 +41,7 @@ public class Logger {
 	}
 
 	public static void Log(String robotState) {
-    	String currentTime = DateFormat.getTimeInstance(DateFormat.FULL).format(new Date());
+    	String currentTime = Double.toString(Timer.getFPGATimestamp());
     	String robotHeading = Double.toString(Robot.forwardDrive.GetRobotHeading());
     	String elevatorPosition = Double.toString(Robot.elevator.currentHeight());
     	String elevatorMotorValue = Double.toString(Robot.elevator.GetMotorValue());

@@ -39,12 +39,13 @@ public class OI {
 	Button toOneToteStepHeight = new JoystickButton(lifterStick, IOLabels.goToOneToteStepHeight);
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
 	Button GyroReset = new JoystickButton(driveStick,IOLabels.gyroReset);
+	Button setElevatorBottom = new JoystickButton(lifterStick, IOLabels.bottomElevatorButton);
 	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
 
 
     public OI(){
         ToggleGuideArm tg = new ToggleGuideArm();
-
+        setElevatorBottom.whenPressed(new ElevatorGoToPosition(0));
     	toOneToteStepHeight.whenPressed(new ElevatorGoToPosition(Settings.scoringPlatformHeight));
     	shift.whenPressed(new ShiftGears());    	
         toToteHeight.whenPressed(new ElevatorGoToPosition(Settings.toteHeight));
@@ -67,4 +68,3 @@ public class OI {
     }
 
 }
-
