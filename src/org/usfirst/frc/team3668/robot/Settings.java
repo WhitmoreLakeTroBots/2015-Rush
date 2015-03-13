@@ -47,7 +47,7 @@ public class Settings {
 	
 	//Other Settings
 	public static final double sideDriveSpeed = 0.5;     //!!!!!!!!!!!DONT GO OVER.75 !!!!!!!!!!!
-	public static final double turnSensitivityMultiplier = .8;
+	public static final double turnSensitivityMultiplier = 0.85;
 	public static final double turnDeadband = 2;
 	public static final double DriveEncoderScaleFactor = 6*Math.PI/279; //6 in wheel, 275 ticks per revolution of the wheel, .0685 in per tick
 	public static final double driveSlowDownDistance = 20;
