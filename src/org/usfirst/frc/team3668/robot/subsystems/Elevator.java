@@ -7,6 +7,7 @@ import org.usfirst.frc.team3668.robot.commands.JoystickElevator;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,6 +32,7 @@ public class Elevator extends Subsystem {
 	Counter elevatorUpperSwitchCounter;
 	double direction;
 	double elevatorPosition;
+	Servo toteSupportServo;
 	
 	public Elevator(){
 		
@@ -42,6 +44,7 @@ public class Elevator extends Subsystem {
 		elevatorUpperSwitch = new DigitalInput(IOLabels.elevatorUpperLimitSwitchPort);
 		elevatorLowerSwitchCounter = new Counter(elevatorLowerSwitch);
 		elevatorUpperSwitchCounter = new Counter(elevatorUpperSwitch);
+		toteSupportServo = new Servo(IOLabels.toteSupportServoPort);
 	}
 	
 	public void raiseLower(double vector){

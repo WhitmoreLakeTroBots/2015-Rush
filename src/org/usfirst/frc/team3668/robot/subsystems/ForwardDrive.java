@@ -44,8 +44,8 @@ public class ForwardDrive extends Subsystem {
 		rightTwo = new Talon(IOLabels.rightMotorTwoPort);
 		leftOne = new Talon(IOLabels.leftMotorOnePort);
 		leftTwo = new Talon(IOLabels.leftMotorTwoPort);
-		rightGearShiftServo = new Servo(IOLabels.rightShifterServo);
-		leftGearShiftServo = new Servo(IOLabels.leftShifterServo);
+		rightGearShiftServo = new Servo(IOLabels.rightShifterServoPort);
+		leftGearShiftServo = new Servo(IOLabels.leftShifterServoPort);
 		chassis = new RobotDrive(leftOne, leftTwo, rightOne, rightTwo);
 		isInLowGear = true;
 		rightGearShiftServo.setAngle(Settings.lowGearRight);
