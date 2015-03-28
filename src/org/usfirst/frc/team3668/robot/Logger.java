@@ -31,6 +31,9 @@ public class Logger {
 					+ comma + "DriveIsInLowGear"
 					+ comma + "SideDriveMotorValue"
 					+ comma + "GuideArmIsDeployed"
+					+ comma + "ToteSupportIsDeployed"
+					+ comma + "ForwardDriveJoystickValue"
+					+ comma + "SideDriveJoystickValue"
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
@@ -58,6 +61,9 @@ public class Logger {
     	String isInLowGear = Boolean.toString(Robot.forwardDrive.GetIsInLowGear());
     	String sideDriveMotorValue = Double.toString(Robot.sideDrive.GetMotorValue());
     	String guideArmIsDeployed = Boolean.toString(Robot.guideArm.IsDeployed());
+    	String toteSupportIsDeployed = Boolean.toString(Robot.toteSupport.IsDeployed());
+    	String forwardDriveJoystickValue = Double.toString(Robot.driveStick.getY());
+    	String sideDriveJoystickValue = Double.toString(Robot.driveStick.getX());
     	
 		try {
 			Files.write(Settings.logFilePath, (
@@ -79,6 +85,9 @@ public class Logger {
 					+ comma + isInLowGear
 					+ comma + sideDriveMotorValue
 					+ comma + guideArmIsDeployed
+					+ comma + toteSupportIsDeployed
+					+ comma + forwardDriveJoystickValue
+					+ comma + sideDriveJoystickValue
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.APPEND);
 		} catch (IOException e) {
