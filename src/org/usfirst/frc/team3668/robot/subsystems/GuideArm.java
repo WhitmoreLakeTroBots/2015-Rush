@@ -35,7 +35,7 @@ public class GuideArm extends Subsystem {
 	}
 	
 	private boolean CanMove(int direction) {
-		return Robot.elevator.currentHeight() > Settings.elevatorBottomPositionWithGuidearmDeployed;
+		return Robot.elevator.currentHeight() > Settings.elevatorBottomPositionWithGuidearmDeployed-.25;
 			
 	}
 
