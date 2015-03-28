@@ -5,6 +5,7 @@ import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
 import org.usfirst.frc.team3668.robot.commands.ResetGyro;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
+import org.usfirst.frc.team3668.robot.commands.ToggleToteSupport;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -40,7 +41,8 @@ public class OI {
 	Button shift = new JoystickButton(driveStick, IOLabels.shiftGearsButton);
 	Button GyroReset = new JoystickButton(driveStick,IOLabels.gyroReset);
 	Button setElevatorBottom = new JoystickButton(lifterStick, IOLabels.bottomElevatorButton);
-	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArm);
+	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArmButton);
+	Button toggleToteSupport = new JoystickButton(lifterStick, IOLabels.toggleToteSupportButton);
 
 
     public OI(){
@@ -54,7 +56,7 @@ public class OI {
         toFourToteHeight.whenPressed(new ElevatorGoToPosition(Settings.fourToteHeight));	
         mattIsPickyForTuskToggle.cancelWhenPressed(tg);
         mattIsPickyForTuskToggle.whenPressed(tg);
-        
+        toggleToteSupport.whenPressed(new ToggleToteSupport());
 //    if(toToteHeight.get()){
 //    	currentToteLevel = 0;
 //    	numberOfToteIncrements = 0;

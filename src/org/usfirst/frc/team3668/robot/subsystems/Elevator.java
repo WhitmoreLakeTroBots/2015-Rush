@@ -32,7 +32,6 @@ public class Elevator extends Subsystem {
 	Counter elevatorUpperSwitchCounter;
 	double direction;
 	double elevatorPosition;
-	Servo toteSupportServo;
 	
 	public Elevator(){
 		
@@ -44,7 +43,6 @@ public class Elevator extends Subsystem {
 		elevatorUpperSwitch = new DigitalInput(IOLabels.elevatorUpperLimitSwitchPort);
 		elevatorLowerSwitchCounter = new Counter(elevatorLowerSwitch);
 		elevatorUpperSwitchCounter = new Counter(elevatorUpperSwitch);
-		toteSupportServo = new Servo(IOLabels.toteSupportServoPort);
 	}
 	
 	public void raiseLower(double vector){

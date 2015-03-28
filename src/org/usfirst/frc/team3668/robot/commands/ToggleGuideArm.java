@@ -21,7 +21,7 @@ public class ToggleGuideArm extends Command {
 	Timer timer;
 	
     public ToggleGuideArm() {
-    	toggleGuideArm = new JoystickButton(Robot.lifterStick, IOLabels.toggleGuideArm);
+    	toggleGuideArm = new JoystickButton(Robot.lifterStick, IOLabels.toggleGuideArmButton);
     	guideArm = Robot.guideArm;
     	requires(guideArm);
     	timer = new Timer();

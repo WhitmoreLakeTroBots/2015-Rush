@@ -12,7 +12,7 @@ public class Logger {
 	
 	public static void InitFile() {
 		try {
-			Files.write(Settings.path, (
+			Files.write(Settings.logFilePath, (
 					"Time"
 					+ comma + "RobotState"
 					+ comma + "RobotHeading"
@@ -60,7 +60,7 @@ public class Logger {
     	String guideArmIsDeployed = Boolean.toString(Robot.guideArm.IsDeployed());
     	
 		try {
-			Files.write(Settings.path, (
+			Files.write(Settings.logFilePath, (
 					currentTime
 					+ comma + robotState
 					+ comma + robotHeading

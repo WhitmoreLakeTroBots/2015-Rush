@@ -35,7 +35,8 @@ public class IOLabels {
 	public static final int slowForwardDrive = 12;
 	public static final int gyroReset = 11;
 		//Lifter Joystick
-	public static final int toggleGuideArm = 1;
+	public static final int toggleGuideArmButton = 1;
+	public static final int toggleToteSupportButton = 2;
 	public static final int goToToteHeightButton = 5;
 	public static final int goToFourToteHeightButton = 7;
 	public static final int goToThreeToteHeightButton = 9;

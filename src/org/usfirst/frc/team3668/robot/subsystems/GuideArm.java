@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class GuideArm extends Subsystem {
     Talon guideArmMotor;
     double currentDirection;
-    boolean isDeployed;
+    private boolean isDeployed;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public GuideArm(){

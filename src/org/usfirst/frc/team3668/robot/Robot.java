@@ -6,6 +6,7 @@ import org.usfirst.frc.team3668.robot.subsystems.Elevator;
 import org.usfirst.frc.team3668.robot.subsystems.ForwardDrive;
 import org.usfirst.frc.team3668.robot.subsystems.GuideArm;
 import org.usfirst.frc.team3668.robot.subsystems.SideDrive;
+import org.usfirst.frc.team3668.robot.subsystems.ToteSupport;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final SideDrive sideDrive = new SideDrive();
 	public static final Elevator elevator = new Elevator();
 	public static final GuideArm guideArm = new GuideArm();
+	public static final ToteSupport toteSupport = new ToteSupport();
 	public static OI oi;
 	
 	public static Joystick driveStick = new Joystick(IOLabels.DriveStick);

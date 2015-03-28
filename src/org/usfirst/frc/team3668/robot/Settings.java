@@ -64,6 +64,9 @@ public class Settings {
 	public static final double universalSpeedScaleFactor = 2;
 	public static final double elevatorCalibrateSpeed = .5;
 	
-	public static final Path path = Paths.get("/u/RobotLog.txt");
+	public static final double toteSupportDeployedAngle = 180;
+	public static final double toteSupportRetractedAngle = 0;
+	
+	public static final Path logFilePath = Paths.get("/u/RobotLog.txt");
 
 }
