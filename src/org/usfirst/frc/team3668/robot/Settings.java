@@ -13,7 +13,7 @@ public class Settings {
 	public static final double elevatorSlowDownDistance = 5;
 	public static final double elevatorSpeedUpDistance = 2;
 	public static final double elevatorDownSpeedScaler = .75;
-	public static final double elevatorBottomPositionWithGuidearmDeployed = 1;
+	public static final double elevatorBottomPositionWithGuidearmDeployed = 5;
 
 	//Drive Gear Settings
 	public static final double lowGearRight = 117;
@@ -65,7 +65,7 @@ public class Settings {
 	public static final double universalSpeedScaleFactor = 2;
 	public static final double elevatorCalibrateSpeed = .5;
 	
-	public static final double toteSupportDeployedAngle = 180;
+	public static final double toteSupportDeployedAngle = 170;
 	public static final double toteSupportRetractedAngle = 90;
 	
 	public static final Path logFilePath = Paths.get("/u/RobotLog.txt");
