@@ -46,11 +46,11 @@ public class ElevatorCalibrate extends Command {
     	return elevator.isAtBottom() || isCalibrated;
     }
     
-    public boolean isCalibrated(){
-    	
-    	return isFinished();
-    	
-    }
+//    public boolean isCalibrated(){
+//    	
+//    	return isFinished();
+//    	
+//    }
     
     // Called once after isFinished returns true
     protected void end() {

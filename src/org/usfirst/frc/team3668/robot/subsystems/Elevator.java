@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3668.robot.subsystems;
 
 import org.usfirst.frc.team3668.robot.IOLabels;
+import org.usfirst.frc.team3668.robot.Robot;
 import org.usfirst.frc.team3668.robot.Settings;
 import org.usfirst.frc.team3668.robot.commands.JoystickElevator;
 
@@ -28,10 +29,13 @@ public class Elevator extends Subsystem {
 	boolean switchAtTop;
 	boolean counterAtTop;
 	boolean counterAtBottom;
+	boolean encoderAtBottomWithGuidearmDeployed;
 	Counter elevatorLowerSwitchCounter;
 	Counter elevatorUpperSwitchCounter;
 	double direction;
 	double elevatorPosition;
+	
+	boolean isCalibrated = false;
 	
 	public Elevator(){
 		
@@ -108,18 +112,22 @@ public class Elevator extends Subsystem {
 	
 	public void calibrateEncoder(){
 		elevatorMotorEncoder.reset();
+		isCalibrated = true;
+	}
+	
+	public boolean IsCalibrated() {
+		return isCalibrated;
 	}
 	
 	public double currentHeight(){
 		return elevatorMotorEncoder.getDistance();
 	}
-	
-	
-	
+
 	public boolean isAtBottom(){
 		switchAtBottom = !elevatorLowerSwitch.get();
 		counterAtBottom = elevatorLowerSwitchCounter.get() > 0;
-		return counterAtBottom || switchAtBottom;
+		encoderAtBottomWithGuidearmDeployed = currentHeight() <= Settings.elevatorBottomPositionWithGuidearmDeployed && Robot.guideArm.IsDeployed() ;
+		return counterAtBottom || switchAtBottom || (IsCalibrated() && encoderAtBottomWithGuidearmDeployed);
 	}
 	
 	public boolean isAtTop(){
