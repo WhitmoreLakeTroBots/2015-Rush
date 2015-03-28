@@ -13,7 +13,7 @@ public class Settings {
 	public static final double elevatorSlowDownDistance = 5;
 	public static final double elevatorSpeedUpDistance = 2;
 	public static final double elevatorDownSpeedScaler = .75;
-	public static final double elevatorBottomPositionWithGuidearmDeployed = 5;
+	public static final double elevatorBottomPositionWithGuidearmDeployed = 3.25;
 
 	//Drive Gear Settings
 	public static final double lowGearRight = 117;
