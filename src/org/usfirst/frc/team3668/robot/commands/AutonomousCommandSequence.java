@@ -29,7 +29,7 @@ public class AutonomousCommandSequence extends CommandGroup {
 //		calibrateContainer.addParallel(new SetGuideArm(Settings.autoGuideArmDirection));		
     	calibrateContainer.addParallel(new ElevatorCalibrate());
 		stepOneForTotes.addParallel(new ElevatorGoToPosition(Settings.toteHeight));
-    	stepOneForTotes.addParallel(new DriveToPosition(Settings.autoToteDriveDistance));
+    	stepOneForTotes.addParallel(new DriveToPosition(Settings.autoTwoInchDriveDistance));
     	
 //    	stepOneForContainer.addParallel(new ElevatorGoToPosition(Settings.containerHeight));
 //    	stepOneForContainer.addParallel(new DriveToPosition(Settings.autoContainerDriveDistance));
@@ -54,6 +54,7 @@ public class AutonomousCommandSequence extends CommandGroup {
     		
     		addSequential(calibrateTote);
         	addSequential(stepOneForTotes);
+//        	addParallel(new SetGuideArm(Settings.guideArmAutoSpeed));
         	addSequential(new ElevatorGoToPosition(Settings.autoToteLift));
 //        	addSequential(new TurnToHeading(Settings.autoTurn));
         	addSequential(new DriveToPositionWithHeading(Settings.autoZoneDistance, Settings.autoTurn));

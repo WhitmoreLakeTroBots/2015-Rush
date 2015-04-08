@@ -31,6 +31,12 @@ public class ToteSupport extends Subsystem {
 	public boolean IsDeployed(){
 		return isDeployed;	
 	}
+	
+	public double currentServoAngle(){
+		
+		return toteSupportServo.getAngle();
+		
+	}
 
 	public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -3,6 +3,7 @@ package org.usfirst.frc.team3668.robot;
 import org.usfirst.frc.team3668.robot.commands.ElevatorCalibrate;
 import org.usfirst.frc.team3668.robot.commands.ElevatorGoToPosition;
 import org.usfirst.frc.team3668.robot.commands.ResetGyro;
+import org.usfirst.frc.team3668.robot.commands.SetGuideArm;
 import org.usfirst.frc.team3668.robot.commands.ShiftGears;
 import org.usfirst.frc.team3668.robot.commands.ToggleGuideArm;
 import org.usfirst.frc.team3668.robot.commands.ToggleToteSupport;
@@ -43,7 +44,7 @@ public class OI {
 	Button setElevatorBottom = new JoystickButton(lifterStick, IOLabels.bottomElevatorButton);
 	public Button mattIsPickyForTuskToggle = new JoystickButton(lifterStick, IOLabels.toggleGuideArmButton);
 	Button toggleToteSupport = new JoystickButton(lifterStick, IOLabels.toggleToteSupportButton);
-
+	Button brendanMoveGuideArms = new JoystickButton(driveStick, IOLabels.brendanMoveGuideArmButton);
 
     public OI(){
         ToggleGuideArm tg = new ToggleGuideArm();
@@ -57,6 +58,7 @@ public class OI {
         mattIsPickyForTuskToggle.cancelWhenPressed(tg);
         mattIsPickyForTuskToggle.whenPressed(tg);
         toggleToteSupport.whenPressed(new ToggleToteSupport());
+//        brendanMoveGuideArms.whenPressed(new SetGuideArm(-Settings.manualGuideArmSpeed));
 //    if(toToteHeight.get()){
 //    	currentToteLevel = 0;
 //    	numberOfToteIncrements = 0;

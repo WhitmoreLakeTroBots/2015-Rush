@@ -34,6 +34,7 @@ public class Logger {
 					+ comma + "ToteSupportIsDeployed"
 					+ comma + "ForwardDriveJoystickValue"
 					+ comma + "SideDriveJoystickValue"
+					+ comma + "ServoPosition"
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
@@ -64,7 +65,7 @@ public class Logger {
     	String toteSupportIsDeployed = Boolean.toString(Robot.toteSupport.IsDeployed());
     	String forwardDriveJoystickValue = Double.toString(Robot.driveStick.getY());
     	String sideDriveJoystickValue = Double.toString(Robot.driveStick.getX());
-    	
+    	String servoPosition = Double.toString(Robot.toteSupport.currentServoAngle());
 		try {
 			Files.write(Settings.logFilePath, (
 					currentTime
@@ -88,6 +89,7 @@ public class Logger {
 					+ comma + toteSupportIsDeployed
 					+ comma + forwardDriveJoystickValue
 					+ comma + sideDriveJoystickValue
+					+ comma + servoPosition
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.APPEND);
 		} catch (IOException e) {

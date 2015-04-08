@@ -8,7 +8,7 @@ public class Settings {
 	//Elevator Settings
 	public static final double elevatorEncoderScaleFactor = 47/-2815.0;
 	public static final double elevatorDistanceTolerance = .1;
-	public static final double elevatorMinMotorCommandUp = 0.3;
+	public static final double elevatorMinMotorCommandUp = 0.45;
 	public static final double elevatorMinMotorCommandDown = 0.1;
 	public static final double elevatorSlowDownDistance = 5;
 	public static final double elevatorSpeedUpDistance = 2;
@@ -22,7 +22,7 @@ public class Settings {
 	public static final double highGearLeft = 80;
 	
 	//Pre-determined Heights
-	public static final double toteHeight = .5;
+	public static final double toteHeight = .255;
 	public static final double containerHeight = 11.25;
 	public static final double twoToteHeight = 11.4;
 	public static final double threeToteHeight = 22.933;
@@ -32,9 +32,9 @@ public class Settings {
 	//Autonomous Settings
 	public static final double autoToteDriveDistance = 6;
 	public static final double autoContainerDriveDistance = 6;
-	public static final double autoToteLift = 9;
+	public static final double autoToteLift = 24;
 	public static final double autoContainerLift = 27;
-	public static final double autoZoneDistance = -115;	
+	public static final double autoZoneDistance = -103;	
 	public static final double autoTurnSpeed = 0.6;
 	public static final double autoDriveSpeed = 1;
 	public static final double autoStepHeight = 6.25;
@@ -64,10 +64,12 @@ public class Settings {
 	public static final double slowedDriveSpeed = 0.6;
 	public static final double universalSpeedScaleFactor = 2;
 	public static final double elevatorCalibrateSpeed = .5;
-	
-	public static final double toteSupportDeployedAngle = 170;
+	public static final double manualGuideArmSpeed = .2;	
+	public static final double toteSupportDeployedAngle = 270;
 	public static final double toteSupportRetractedAngle = 90;
-	
+	public static final double autoTwoInchDriveDistance = 4;
+	public static final double driveSpeedScaler = 1.75;
+	public static final double guideArmAutoSpeed = 0.5;
 	public static final Path logFilePath = Paths.get("/u/RobotLog.txt");
 
 }

@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -61,9 +62,10 @@ public class ForwardDrive extends Subsystem {
 		
 	public void Drive(double speed, double turn){
 			chassis.arcadeDrive(speed, turn);
+			
 //			SmartDashboard.putNumber("Left Drive Encoder: ", leftEncoder.getDistance());
 //			SmartDashboard.putNumber("Right Drive Encoder: ", rightEncoder.getDistance());
-//			SmartDashboard.putNumber("Robot Angle: ", GetRobotHeading());
+			SmartDashboard.putNumber("Robot Angle: ", GetRobotHeading());
 	}
 	
 	public void ShiftGears(){

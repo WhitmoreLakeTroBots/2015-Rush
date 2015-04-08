@@ -28,6 +28,12 @@ public class GuideArm extends Subsystem {
 			guideArmMotor.set(0);
 		}
 	}
+	//New addition for Prast
+	public void ButtonMoveArms(double speed){
+		
+		guideArmMotor.set(speed);
+		
+	}
 	
 	
 	public boolean IsDeployed(){
