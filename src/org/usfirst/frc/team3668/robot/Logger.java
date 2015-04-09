@@ -34,7 +34,12 @@ public class Logger {
 					+ comma + "ToteSupportIsDeployed"
 					+ comma + "ForwardDriveJoystickValue"
 					+ comma + "SideDriveJoystickValue"
-					+ comma + "ServoPosition"
+					+ comma + "ToteSupportPosition"
+					+ comma + "InputVoltage"
+					+ comma + "ElevatorAmperage"
+					+ comma + "LeftDriveMotorAmperage"
+					+ comma + "RightDriveMotorAmperage"
+					+ comma + "SideDriveMotorAmperage"
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
 		} catch (IOException e) {
@@ -65,7 +70,12 @@ public class Logger {
     	String toteSupportIsDeployed = Boolean.toString(Robot.toteSupport.IsDeployed());
     	String forwardDriveJoystickValue = Double.toString(Robot.driveStick.getY());
     	String sideDriveJoystickValue = Double.toString(Robot.driveStick.getX());
-    	String servoPosition = Double.toString(Robot.toteSupport.currentServoAngle());
+    	String toteSupportPosition = Double.toString(Robot.toteSupport.currentServoAngle());
+    	String inputVoltage = Double.toString(Robot.PDP.getVoltage());
+    	String elevatorAmperage = Double.toString(Robot.PDP.getCurrent(IOLabels.pdp_ElevatorPort));
+    	String leftDriveMotorAmperage = Double.toString(Robot.PDP.getCurrent(IOLabels.pdp_LeftDriveMotorPort));
+    	String rightDriveMotorAmperage = Double.toString(Robot.PDP.getCurrent(IOLabels.pdp_RightDriveMotorPort));
+    	String sideDriveMotorAmperage = Double.toString(Robot.PDP.getCurrent(IOLabels.pdp_SideDriveMotorPort));
 		try {
 			Files.write(Settings.logFilePath, (
 					currentTime
@@ -89,7 +99,12 @@ public class Logger {
 					+ comma + toteSupportIsDeployed
 					+ comma + forwardDriveJoystickValue
 					+ comma + sideDriveJoystickValue
-					+ comma + servoPosition
+					+ comma + toteSupportPosition
+					+ comma + inputVoltage
+					+ comma + elevatorAmperage
+					+ comma + leftDriveMotorAmperage
+					+ comma + rightDriveMotorAmperage
+					+ comma + sideDriveMotorAmperage
 					+ "\n"
 					).getBytes("utf-8"), StandardOpenOption.WRITE, StandardOpenOption.APPEND);
 		} catch (IOException e) {

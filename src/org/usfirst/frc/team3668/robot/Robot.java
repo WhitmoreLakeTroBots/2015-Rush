@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -34,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static Joystick driveStick = new Joystick(IOLabels.DriveStick);
 	public static Joystick lifterStick = new Joystick(IOLabels.LifterStick);
 	public static AnalogInput autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
+	public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
 
     AutonomousCommandSequence autonomousCommand;
 

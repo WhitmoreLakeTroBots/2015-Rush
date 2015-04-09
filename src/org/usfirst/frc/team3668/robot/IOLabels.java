@@ -56,4 +56,10 @@ public class IOLabels {
 	public static final int LifterStick = 2;
 	public static final int brendanMoveGuideArmButton = 11;
 	
-}
+//	PDP Ports
+	public static final int pdp_ElevatorPort = 1;
+	public static final int pdp_LeftDriveMotorPort = 1;
+	public static final int pdp_RightDriveMotorPort = 1;
+	public static final int pdp_SideDriveMotorPort = 1;
+	
+	}
