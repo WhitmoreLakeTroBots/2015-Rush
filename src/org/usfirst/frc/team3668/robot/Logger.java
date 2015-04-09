@@ -3,8 +3,6 @@ package org.usfirst.frc.team3668.robot;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
-
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Logger {
@@ -34,6 +32,7 @@ public class Logger {
 					+ comma + "ToteSupportIsDeployed"
 					+ comma + "ForwardDriveJoystickValue"
 					+ comma + "SideDriveJoystickValue"
+					+ comma + "ElevatorJoystickValue"
 					+ comma + "ToteSupportPosition"
 					+ comma + "InputVoltage"
 					+ comma + "ElevatorAmperage"
@@ -70,6 +69,7 @@ public class Logger {
     	String toteSupportIsDeployed = Boolean.toString(Robot.toteSupport.IsDeployed());
     	String forwardDriveJoystickValue = Double.toString(Robot.driveStick.getY());
     	String sideDriveJoystickValue = Double.toString(Robot.driveStick.getX());
+    	String elevatorJoystickValue = Double.toString(Robot.lifterStick.getY());
     	String toteSupportPosition = Double.toString(Robot.toteSupport.currentServoAngle());
     	String inputVoltage = Double.toString(Robot.PDP.getVoltage());
     	String elevatorAmperage = Double.toString(Robot.PDP.getCurrent(IOLabels.pdp_ElevatorPort));
@@ -99,6 +99,7 @@ public class Logger {
 					+ comma + toteSupportIsDeployed
 					+ comma + forwardDriveJoystickValue
 					+ comma + sideDriveJoystickValue
+					+ comma + elevatorJoystickValue
 					+ comma + toteSupportPosition
 					+ comma + inputVoltage
 					+ comma + elevatorAmperage

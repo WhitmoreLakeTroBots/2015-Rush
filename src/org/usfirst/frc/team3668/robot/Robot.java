@@ -116,7 +116,7 @@ public class Robot extends IterativeRobot {
 //    	String joystickReadout = Double.toString(driveStick.getAxis(Joystick.AxisType.kY));
     	counter++;
     	if((counter % 25 == 0)){
-    		Logger.Log("Periodic");    		
+    		Logger.Log("Teleop");    		
     	}
     	
         Scheduler.getInstance().run();
