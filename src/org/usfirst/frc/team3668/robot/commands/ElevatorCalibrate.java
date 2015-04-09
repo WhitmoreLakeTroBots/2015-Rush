@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ElevatorCalibrate extends Command {
 
 	Elevator elevator;
-	boolean isCalibrated;
+//	boolean isCalibrated;
 	
     public ElevatorCalibrate() {
         // Use requires() here to declare subsystem dependencies
@@ -24,7 +24,7 @@ public class ElevatorCalibrate extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-     isCalibrated = false;
+//     isCalibrated = false;
     
     
     }
@@ -43,7 +43,7 @@ public class ElevatorCalibrate extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
        
-    	return elevator.isAtBottom() || isCalibrated;
+    	return elevator.isAtBottom() || elevator.IsCalibrated();
     }
     
 //    public boolean isCalibrated(){
@@ -56,7 +56,7 @@ public class ElevatorCalibrate extends Command {
     protected void end() {
     	elevator.calibrateEncoder();
     	elevator.raiseLower(0);
-    	isCalibrated = true;
+//    	isCalibrated = true;
     	
     }
 
