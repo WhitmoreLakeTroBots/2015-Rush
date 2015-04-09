@@ -58,8 +58,8 @@ public class IOLabels {
 	
 //	PDP Ports
 	public static final int pdp_ElevatorPort = 1;
-	public static final int pdp_LeftDriveMotorPort = 1;
-	public static final int pdp_RightDriveMotorPort = 1;
-	public static final int pdp_SideDriveMotorPort = 1;
+	public static final int pdp_LeftDriveMotorPort = 15;
+	public static final int pdp_RightDriveMotorPort = 0;
+	public static final int pdp_SideDriveMotorPort = 12;
 	
 	}
