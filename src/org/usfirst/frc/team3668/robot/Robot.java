@@ -9,11 +9,12 @@ import org.usfirst.frc.team3668.robot.subsystems.SideDrive;
 import org.usfirst.frc.team3668.robot.subsystems.ToteSupport;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.PowerDistributionPanel;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -36,13 +37,18 @@ public class Robot extends IterativeRobot {
 	public static Joystick lifterStick = new Joystick(IOLabels.LifterStick);
 	public static AnalogInput autonomousSwitch = new AnalogInput(IOLabels.brendanIsPickyAutonomousSwitchPort);
 	public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
-
+	CameraServer camera;
     AutonomousCommandSequence autonomousCommand;
-
     ElevatorCalibrate elevatorCalibrate;
 //    SmartDashboard smartDashboard;
 	int counter;
 
+	public Robot(){
+		
+//		camera = CameraServer.getInstance();
+//		camera.setQuality(50);
+//		camera.startAutomaticCapture("cam1");
+	}
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -114,7 +120,7 @@ public class Robot extends IterativeRobot {
     	}
     	
         Scheduler.getInstance().run();
-//        System.out.println(elevatorCalibrate.isCalibrated());
+//        System.out.println(elevatorCalibrate.is           Calibrated());
         
         
     }

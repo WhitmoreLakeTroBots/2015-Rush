@@ -22,10 +22,10 @@ public class ForwardDrive extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	Talon rightOne;
+//	Talon rightOne;
 	Talon rightTwo;
 	Talon leftOne;
-	Talon leftTwo;
+//	Talon leftTwo;
 	Encoder leftEncoder;
 	Encoder rightEncoder;
 	Servo rightGearShiftServo;
@@ -41,13 +41,14 @@ public class ForwardDrive extends Subsystem {
 		rightEncoder = new Encoder(IOLabels.driveEncoderRightAPort, IOLabels.driveEncoderRightBPort);
 		leftEncoder.setDistancePerPulse(Settings.DriveEncoderScaleFactor); //Need to check the direction of the encoders to make sure that forwards is positive
 		rightEncoder.setDistancePerPulse(-Settings.DriveEncoderScaleFactor);
-		rightOne = new Talon(IOLabels.rightMotorOnePort);
+//		rightOne = new Talon(IOLabels.rightMotorOnePort);
 		rightTwo = new Talon(IOLabels.rightMotorTwoPort);
 		leftOne = new Talon(IOLabels.leftMotorOnePort);
-		leftTwo = new Talon(IOLabels.leftMotorTwoPort);
+//		leftTwo = new Talon(IOLabels.leftMotorTwoPort);
 		rightGearShiftServo = new Servo(IOLabels.rightShifterServoPort);
 		leftGearShiftServo = new Servo(IOLabels.leftShifterServoPort);
-		chassis = new RobotDrive(leftOne, leftTwo, rightOne, rightTwo);
+//		chassis = new RobotDrive(leftOne, leftTwo, rightOne, rightTwo);
+		chassis = new RobotDrive(leftOne, rightTwo);
 		isInLowGear = true;
 		rightGearShiftServo.setAngle(Settings.lowGearRight);
 		leftGearShiftServo.setAngle(Settings.lowGearLeft);
@@ -112,11 +113,13 @@ public class ForwardDrive extends Subsystem {
 	}
 	
 	public double GetLeftDriveTwoValue() {
-		return leftTwo.get();
+//		return leftTwo.get();
+		return 0;
 	}
 	
 	public double GetRightDriveOneValue() {
-		return rightOne.get();
+//		return rightOne.get();
+		return 0;
 	}
 	
 	public double GetRightDriveTwoValue() {

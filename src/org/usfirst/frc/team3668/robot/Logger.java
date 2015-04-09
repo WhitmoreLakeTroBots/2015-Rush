@@ -25,8 +25,8 @@ public class Logger {
 					+ comma + "DriveLeftPosition"
 					+ comma + "DriveRightPosition"
 					+ comma + "DriveLeftOneMotorValue"
-					+ comma + "DriveLeftTwoMotorValue"
-					+ comma + "DriveRightOneMotorValue"
+//					+ comma + "DriveLeftTwoMotorValue"
+//					+ comma + "DriveRightOneMotorValue"
 					+ comma + "DriveRightTwoMotorValue"
 					+ comma + "DriveIsInLowGear"
 					+ comma + "SideDriveMotorValue"
@@ -61,8 +61,8 @@ public class Logger {
     	String driveLeftPosition = Double.toString(Robot.forwardDrive.GetLeftEncoder());
     	String driveRightPosition = Double.toString(Robot.forwardDrive.GetRightEncoder());
     	String driveLeftOneValue = Double.toString(Robot.forwardDrive.GetLeftDriveOneValue());
-    	String driveLeftTwoValue = Double.toString(Robot.forwardDrive.GetLeftDriveTwoValue());
-    	String driveRightOneValue = Double.toString(Robot.forwardDrive.GetRightDriveOneValue());
+//    	String driveLeftTwoValue = Double.toString(Robot.forwardDrive.GetLeftDriveTwoValue());
+//    	String driveRightOneValue = Double.toString(Robot.forwardDrive.GetRightDriveOneValue());
     	String driveRightTwoValue = Double.toString(Robot.forwardDrive.GetRightDriveTwoValue());
     	String isInLowGear = Boolean.toString(Robot.forwardDrive.GetIsInLowGear());
     	String sideDriveMotorValue = Double.toString(Robot.sideDrive.GetMotorValue());
@@ -90,8 +90,8 @@ public class Logger {
 					+ comma + driveLeftPosition
 					+ comma + driveRightPosition
 					+ comma + driveLeftOneValue
-					+ comma + driveLeftTwoValue
-					+ comma + driveRightOneValue
+//					+ comma + driveLeftTwoValue
+//					+ comma + driveRightOneValue
 					+ comma + driveRightTwoValue
 					+ comma + isInLowGear
 					+ comma + sideDriveMotorValue

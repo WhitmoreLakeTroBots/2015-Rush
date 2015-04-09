@@ -83,7 +83,7 @@ public class Elevator extends Subsystem {
 				
 			} else{
 				
-				elevatorMotor.set(vector);
+				elevatorMotor.set(vector*0.8);
 				
 			}
 //			SmartDashboard.putBoolean("Can Move?", true);

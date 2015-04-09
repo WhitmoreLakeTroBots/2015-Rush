@@ -2,10 +2,10 @@ package org.usfirst.frc.team3668.robot;
 
 public class IOLabels {
 	//Motors
-	public static final int rightMotorOnePort = 0;
+//	public static final int rightMotorOnePort = 0;
 	public static final int rightMotorTwoPort = 1;
 	public static final int leftMotorOnePort = 2;
-	public static final int leftMotorTwoPort = 3;
+//	public static final int leftMotorTwoPort = 3;
 	public static final int sideDriveMotorPort = 4;
 	public static final int elevatorMotorPort = 5;
 	public static final int guideArmMotorPort = 6;
