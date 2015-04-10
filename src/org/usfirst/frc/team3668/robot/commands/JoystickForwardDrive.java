@@ -31,23 +31,16 @@ public class JoystickForwardDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		// if(brendanWantsAdjustableDrive.get()){
-		//
-		// speedMultiplier = Settings.slowedDriveSpeed;
-		//
-		// } else{
-		//
-		// speedMultiplier = Settings.normalDriveSpeed;
-		//
-		// }
-		Robot.forwardDrive.Drive(SpeedScaler.scaledSpeed(
-				(Robot.driveStick.getAxis(Joystick.AxisType.kY)),
-				Settings.universalSpeedScaleFactor), SpeedScaler.scaledSpeed(
-				(Robot.driveStick.getAxis(Joystick.AxisType.kTwist))
-						* Settings.turnSensitivityMultiplier,
-				Settings.universalSpeedScaleFactor));
-		// Robot.forwardDrive.TestServos(Robot.lifterStick.getAxis(Joystick.AxisType.kX));
-
+//		Robot.forwardDrive.Drive(SpeedScaler.scaledSpeed(
+//				(Robot.driveStick.getAxis(Joystick.AxisType.kY)),
+//				Settings.universalSpeedScaleFactor), SpeedScaler.scaledSpeed(
+//				(Robot.driveStick.getAxis(Joystick.AxisType.kTwist))
+//						* Settings.turnSensitivityMultiplier,
+//				Settings.universalSpeedScaleFactor));
+		Robot.forwardDrive.Drive(Robot.driveStick.getAxis(Joystick.AxisType.kY)
+				, SpeedScaler.scaledSpeed(
+					(Robot.driveStick.getAxis(Joystick.AxisType.kTwist)) * Settings.turnSensitivityMultiplier
+					, Settings.universalSpeedScaleFactor));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
