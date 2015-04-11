@@ -7,7 +7,8 @@ public class IOLabels {
 	public static final int leftMotorOnePort = 2;
 //	public static final int leftMotorTwoPort = 3;
 	public static final int sideDriveMotorPort = 4;
-	public static final int elevatorMotorPort = 5;
+//	public static final int elevatorMotorPort = 5;
+	public static final int elevatorMotorPort = 0;
 	public static final int guideArmMotorPort = 6;
 	public static final int rightShifterServoPort = 8;
 	public static final int leftShifterServoPort = 9;

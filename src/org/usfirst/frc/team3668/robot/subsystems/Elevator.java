@@ -8,8 +8,9 @@ import org.usfirst.frc.team3668.robot.commands.JoystickElevator;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Servo;
-import edu.wpi.first.wpilibj.TalonSRX;
+//import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Talon;
+//import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -21,7 +22,7 @@ public class Elevator extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	TalonSRX elevatorMotor;
+	Talon elevatorMotor;
 	Encoder elevatorMotorEncoder;
 	DigitalInput elevatorLowerSwitch;
 	DigitalInput elevatorUpperSwitch;
@@ -39,7 +40,7 @@ public class Elevator extends Subsystem {
 	
 	public Elevator(){
 		
-		elevatorMotor = new TalonSRX(IOLabels.elevatorMotorPort);
+		elevatorMotor = new Talon(IOLabels.elevatorMotorPort);
 		elevatorMotorEncoder = new Encoder(IOLabels.elevatorEncoderAPort, IOLabels.elevatorEncoderBPort);		
 		elevatorMotorEncoder.setDistancePerPulse(Settings.elevatorEncoderScaleFactor);
 //		elevatorMotor.setSafetyEnabled(true);  EVIL!
